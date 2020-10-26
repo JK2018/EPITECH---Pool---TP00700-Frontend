@@ -8,20 +8,27 @@
                         <h1>Welcome to Time Manager</h1>
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
                         <!--<a href="#" class="square_btn">Create account</a>-->
-                         <router-link  to="/registration">
+                        <router-link  to="/">
                             <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
-                            Register  
+                            Back  
                         </router-link>
-                        
                     </div>
                 </div>
                 <div class="innerDiv right">
                     <div class="loginForm">
-                        <h1>Sign in</h1>
+                        <h1>Create Account</h1>
                         <form>
+                            <div class="user-box">
+                            <input type="text" name="" required>
+                            <label>First Name</label>
+                            </div>
+                            <div class="user-box">
+                            <input type="text" name="" required>
+                            <label>Last Name</label>
+                            </div>
                             <div class="user-box">
                             <input type="text" name="" required>
                             <label>Email Address</label>
@@ -30,13 +37,14 @@
                             <input type="password" name="" required>
                             <label>Password</label>
                             </div>
-                            <a class="formSubmit" href="#">
+                            
+                            <router-link class="formSubmit" to="">
                             <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
-                            Submit
-                            </a>
+                            Submit  
+                            </router-link>
                         </form>
 
                     </div>
@@ -57,7 +65,7 @@
 <script>
 
 export default {
-    name: 'login',
+    name: 'registration',
     data(){
         return{
 
@@ -167,7 +175,7 @@ export default {
   font-size: 12px;
 }
 
- router-link {
+ a {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -181,7 +189,7 @@ export default {
   letter-spacing: 4px
 }
 
- router-link:hover {
+ a:hover {
   background:  #ff8b5f;
   color: rgba(255, 255, 255, 0.555);
   border-radius: 5px;
@@ -191,7 +199,7 @@ export default {
               0 0 100px  #ff8b5f;
 }
 
- router-link span {
+ a span {
   position: absolute;
   display: block;
 }

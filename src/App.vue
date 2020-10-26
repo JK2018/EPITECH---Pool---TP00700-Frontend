@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <Login></Login>
+    <router-view></router-view>
+    
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Login from "./components/Login";
+
+
+
 
 export default {
   name: 'App',
   components: {
-    Login
+    
   }
 }
 </script>
@@ -19,9 +21,9 @@ export default {
 <style>
 body {
   
-  background: #E6DADA;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #274046, #E6DADA);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #334d50;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #cbcaa5, #334d50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
