@@ -35,7 +35,7 @@
                             <span></span>
                             <span></span>
                             <span></span>
-                            Submit
+                            Sign In
                             </a>
                         </form>
 

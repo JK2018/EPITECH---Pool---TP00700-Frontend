@@ -13,7 +13,7 @@
                             <span></span>
                             <span></span>
                             <span></span>
-                            Back  
+                            Back to Login
                         </router-link>
                     </div>
                 </div>
