@@ -84,7 +84,7 @@ export default {
 .user-info {
   display: flex;
   flex-direction: column;
-  margin: 0 auto 80px;
+  margin: 80px auto;
 }
 
 .user-menu {
