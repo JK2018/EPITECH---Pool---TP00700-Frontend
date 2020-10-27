@@ -1,54 +1,46 @@
 <template>
-    <div>
-        
-        <div class="maindiv2">
+  <div class="maindiv2">
 
-                <div class="innerDiv left">
-                    <div class="description">
-                        <h1>Welcome to Time Manager</h1>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                        <!--<a href="#" class="square_btn">Create account</a>-->
-                         <router-link  to="/registration">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Register  
-                        </router-link>
-                        
-                    </div>
-                </div>
-                <div class="innerDiv right">
-                    <div class="loginForm">
-                        <h1>Sign in</h1>
-                        <form>
-                            <div class="user-box">
-                            <input type="text" name="" required>
-                            <label>Email Address</label>
-                            </div>
-                            <div class="user-box">
-                            <input type="password" name="" required>
-                            <label>Password</label>
-                            </div>
-                            <a class="formSubmit" href="/dashboard">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Sign In
-                            </a>
-                        </form>
+    <div class="innerDiv left">
+      <div class="description">
+        <h1>Welcome to Time Manager</h1>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+        <!--<a href="#" class="square_btn">Create account</a>-->
+        <router-link  to="/registration">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Register
+        </router-link>
 
-                    </div>
-                </div>
-              
-        </div>
-
-
-
-        
- 
+      </div>
     </div>
+    <div class="innerDiv right">
+      <div class="loginForm">
+        <h1>Sign in</h1>
+        <form>
+          <div class="user-box">
+            <input type="text" name="" required>
+            <label>Email Address</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="" required>
+            <label>Password</label>
+          </div>
+          <a class="formSubmit" href="/dashboard">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Sign In
+          </a>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
 </template>
 
 
@@ -74,11 +66,12 @@ export default {
 
     .maindiv2{
         display: flex;
-        justify-content: center;
-        position: relative;
-      margin: 5% auto auto;
-      width: 90%;
-        height: 600px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 10%;
+      margin-left: 10%;
+        height: 700px;
         background-image: url('../assets/marble.jpg');
     }
     .innerDiv{

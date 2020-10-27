@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <HomePage/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import HomePage from "./components/HomePage";
 
 export default {
   name: 'App',
   components: {
-    HomePage
   }
 }
 </script>
@@ -23,6 +20,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+body {
+  font-family: 'Roboto';
+  background: #334d50;
+  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
+  background: linear-gradient(to right, #cbcaa5, #334d50);
+
 }
 </style>

@@ -64,6 +64,7 @@ export default {
 .home-container{
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 .sidebar {
