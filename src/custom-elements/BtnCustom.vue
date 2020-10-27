@@ -1,0 +1,35 @@
+<template>
+  <a href="" class="btn-view">
+    <i :class=iconName></i>
+    <span >{{textName}}</span>
+  </a>
+</template>
+
+<script>
+export default {
+  name: "BtnCustom",
+  props: {
+    textName: String,
+    iconName: String
+  }
+}
+</script>
+
+<style scoped>
+  .btn-view{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 1px;
+    display: inline-flex;
+  }
+
+  .btn-view i{
+    margin-right: 25px;
+    font-size: 35px;
+  }
+
+  .btn-view span{
+    font-size: 23px;
+    line-height: 33px;
+  }
+</style>
