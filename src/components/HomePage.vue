@@ -17,6 +17,8 @@
         <div class="icon-btn">
           <BtnCustom icon-name="las la-rocket"
                      text-name="Dashboard"></BtnCustom>
+          <BtnCustom icon-name="las la-calendar"
+                     text-name="Calendar"></BtnCustom>
         </div>
 <!--        <div class="icon-btn">-->
 <!--          <BtnCustom text-name="Clients"></BtnCustom>-->
@@ -114,7 +116,7 @@ export default {
 
 .icon-btn {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .dsh-row{

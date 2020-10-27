@@ -21,6 +21,7 @@ export default {
     color: white;
     letter-spacing: 1px;
     display: inline-flex;
+    margin: 15px;
   }
 
   .btn-view i{
