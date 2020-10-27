@@ -1,0 +1,282 @@
+<template>
+    <div>
+        
+        <div class="maindiv2">
+
+                <div class="innerDiv left">
+                    <div class="description">
+                        <h1>Welcome to Time Manager</h1>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                        <!--<a href="#" class="square_btn">Create account</a>-->
+                        <router-link  to="/">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Back to Login
+                        </router-link>
+                    </div>
+                </div>
+                <div class="innerDiv right">
+                    <div class="loginForm">
+                        <h1>Create Account</h1>
+                        <form>
+                            <div class="user-box">
+                            <input type="text" name="" required>
+                            <label>First Name</label>
+                            </div>
+                            <div class="user-box">
+                            <input type="text" name="" required>
+                            <label>Last Name</label>
+                            </div>
+                            <div class="user-box">
+                            <input type="text" name="" required>
+                            <label>Email Address</label>
+                            </div>
+                            <div class="user-box">
+                            <input type="password" name="" required>
+                            <label>Password</label>
+                            </div>
+                            
+                            <router-link class="formSubmit" to="">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Submit  
+                            </router-link>
+                        </form>
+
+                    </div>
+                </div>
+              
+        </div>
+
+
+
+        
+ 
+    </div>
+</template>
+
+
+
+
+<script>
+
+export default {
+    name: 'registration',
+    data(){
+        return{
+
+        }
+    }
+    
+}
+</script>
+
+
+
+<style scoped>
+  
+
+    .maindiv2{
+        display: flex;
+        justify-content: center;
+        position: relative;
+      margin: 5% auto auto;
+      width: 90%;
+        height: 600px;
+        background-image: url('../assets/marble.jpg');
+    }
+    .innerDiv{
+        background-color:#272626;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    }
+    .innerDiv.left{
+        width: 60%;
+    }
+    .innerDiv.right{
+        width: 40%;
+        opacity: 0.9;
+    }
+    .description{
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 50%;
+        margin:auto;
+        color: rgba(255, 255, 255, 0.555);
+    }
+    .loginForm{
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 50%;
+        margin:auto;
+        color: rgba(255, 255, 255, 0.555);
+    }
+    .square_btn{
+    display: inline-block;
+    padding: 7px 20px;
+    font-weight: bold;
+	border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+}
+
+.square_btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+
+
+
+
+
+
+.loginForm .user-box {
+  position: relative;
+}
+
+.loginForm .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.555);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.555);
+  outline: none;
+  background: transparent;
+}
+.loginForm .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.555);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.loginForm .user-box input:focus ~ label,
+.loginForm .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #ff8b5f;
+  font-size: 12px;
+}
+
+ a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ff8b5f;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+ a:hover {
+  background:  #ff8b5f;
+  color: rgba(255, 255, 255, 0.555);
+  border-radius: 5px;
+  box-shadow: 0 0 5px  #ff8b5f,
+              0 0 25px #ff8b5f,
+              0 0 50px  #ff8b5f,
+              0 0 100px  #ff8b5f;
+}
+
+ a span {
+  position: absolute;
+  display: block;
+}
+
+ .formSubmit span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent,  #ff8b5f);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+ .formSubmit span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent,  #ff8b5f);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+ .formSubmit span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent,  #ff8b5f);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+ .formSubmit span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent,  #ff8b5f);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+ 
+</style>
