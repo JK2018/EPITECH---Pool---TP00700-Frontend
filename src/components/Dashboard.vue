@@ -1,9 +1,7 @@
 <template>
-  <div>
+  <div class="dsh-col">
       <div class="dsh-row">
-        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>
-        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>
-        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>
+        <img src="../assets/" alt="">
       </div>
       <div class="dsh-row">
         <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>
@@ -25,6 +23,10 @@ export default {
 </script>
 
 <style scoped>
+  .dsh-col{
+    display: flex;
+    flex-direction: column;
+  }
   .dsh-row{
     display: flex;
     flex-direction: row;
