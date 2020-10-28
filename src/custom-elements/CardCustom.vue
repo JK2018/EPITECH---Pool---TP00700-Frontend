@@ -11,7 +11,7 @@ export default {
   name: "CardCustom",
   props: {
     title: String,
-    price: Number,
+    price: String,
     desc: String,
   }
 }

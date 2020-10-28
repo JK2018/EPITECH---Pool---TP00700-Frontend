@@ -6,7 +6,7 @@
         <h1>Welcome to Time Manager</h1>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
         <!--<a href="#" class="square_btn">Create account</a>-->
-        <router-link  to="/">
+        <router-link  to="/login">
           <span></span>
           <span></span>
           <span></span>

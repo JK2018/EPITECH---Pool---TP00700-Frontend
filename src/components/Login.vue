@@ -6,7 +6,7 @@
         <h1>Welcome to Time Manager</h1>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
         <!--<a href="#" class="square_btn">Create account</a>-->
-        <router-link  to="/registration">
+        <router-link  to="/register">
           <span></span>
           <span></span>
           <span></span>
@@ -28,7 +28,7 @@
             <input type="password" name="" required>
             <label>Password</label>
           </div>
-          <a class="formSubmit" href="/dashboard">
+          <a class="formSubmit" v-on:click="login">
             <span></span>
             <span></span>
             <span></span>
@@ -54,8 +54,13 @@ export default {
         return{
 
         }
+    },
+    methods: {
+        login(){
+          localStorage.setItem("token","abc");
+          this.$router.push({name:'homePage'});
+        }
     }
-    
 }
 </script>
 

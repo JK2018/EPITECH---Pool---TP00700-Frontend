@@ -1,8 +1,8 @@
 <template>
-  <a href="" class="btn-view">
+  <div class="btn-view">
     <i :class=iconName></i>
     <span >{{textName}}</span>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
 <style scoped>
   .btn-view{
     text-decoration: none;
-    color: white;
+    color: #242323;
     letter-spacing: 1px;
     display: inline-flex;
     margin: 15px;

@@ -15,46 +15,51 @@
       </div>
       <div class="user-menu">
         <div class="icon-btn">
-          <BtnCustom icon-name="las la-rocket"
-                     text-name="Dashboard"></BtnCustom>
-          <BtnCustom icon-name="las la-calendar"
-                     text-name="Calendar"></BtnCustom>
+
+          <BtnCustom
+              @click.native="getMenu(1)"
+              icon-name="las la-rocket"
+              text-name="Dashboard"></BtnCustom>
+          <BtnCustom
+              @click.native="getMenu(2)"
+              icon-name="las la-calendar"
+              text-name="Calendar"></BtnCustom>
         </div>
-<!--        <div class="icon-btn">-->
-<!--          <BtnCustom text-name="Clients"></BtnCustom>-->
-<!--        </div>-->
-<!--        <div class="icon-btn">-->
-<!--          <BtnCustom text-name="Invoices"></BtnCustom>-->
-<!--        </div>-->
-<!--        <div class="icon-btn">-->
-<!--          <BtnCustom text-name="Estimates"></BtnCustom>-->
-<!--        </div>-->
       </div>
     </div>
-<!--    <div class="dashboard">-->
-<!--      <div class="dsh-row">-->
-<!--        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>-->
-<!--        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>-->
-<!--        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>-->
-<!--      </div>-->
-<!--      <div class="dsh-row">-->
-<!--        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>-->
-<!--        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>-->
-<!--        <CardCustom title="Fabrice" price="$22.3k" desc="We're the best"/>-->
-<!--      </div>-->
-<!--    </div>-->
+
+    <div class="dashboard">
+      <Dashboard v-if="menuType === 1"></Dashboard>
+      <SearchUser v-if="menuType === 2"></SearchUser>
+<!--      <router-view></router-view>-->
+    </div>
+
   </div>
 </template>
 
 <script>
 import BtnCustom from "@/custom-elements/BtnCustom";
-// import CardCustom from "@/custom-elements/CardCustom";
+import Dashboard from "@/components/Dashboard";
+import SearchUser from "@/components/SearchUser";
 
 export default {
   name: "HomePage",
   components: {
+    SearchUser,
+    Dashboard,
     BtnCustom,
     // CardCustom,
+  },
+  methods: {
+    getMenu(val){
+      this.menuType = val;
+      console.log("Val = "+this.menuType)
+    }
+  },
+  data() {
+    return {
+      menuType: 1,
+    }
   }
 }
 </script>
@@ -70,15 +75,19 @@ export default {
 .sidebar {
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 20px;
-  background-color: #151012;
+  background-color: #cbc19d;
+  /*background-color: #151012;*/
   width: 300px;
 }
 
 .dashboard {
   display: flex;
   flex-direction: column;
+  background-color: #f5ffd9;
+  width: 100%;
+  height: 100%;
+  color: black;
 }
 
 .user-info {
@@ -120,10 +129,6 @@ export default {
   flex-direction: column;
 }
 
-.dsh-row{
-  display: flex;
-  flex-direction: row;
-}
 
 /*@font-face {*/
 /*  font-family: bransleyBold;*/
@@ -144,7 +149,7 @@ export default {
 
 .user-name {
   text-align: center;
-  color: white;
+  color: #242323;
 }
 
 
