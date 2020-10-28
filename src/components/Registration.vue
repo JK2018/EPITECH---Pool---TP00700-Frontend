@@ -1,4 +1,5 @@
 <template>
+<div class="bdy">
   <div class="maindiv2">
 
     <div class="innerDiv left">
@@ -6,13 +7,15 @@
         <h1>Welcome to Time Manager</h1>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
         <!--<a href="#" class="square_btn">Create account</a>-->
-        <router-link  to="/">
+        <nav class="routerbtn">
+        <router-link  to="/login">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Back to Login
         </router-link>
+        </nav>
       </div>
     </div>
     <div class="innerDiv right">
@@ -35,19 +38,21 @@
             <input type="password" name="" required>
             <label>Password</label>
           </div>
-
-          <router-link class="formSubmit" to="">
+        <nav class="routerbtn">
+          <div class="formSubmit" v-on:click="submitForm">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Submit
-          </router-link>
+          </div>
+        </nav>
         </form>
 
       </div>
     </div>
 
+  </div>
   </div>
 </template>
 
@@ -62,6 +67,13 @@ export default {
         return{
 
         }
+    },
+    methods:{
+        submitForm(){
+            // axios blablabla 
+            // ...
+            this.$router.push({ name: 'login' })
+        }
     }
     
 }
@@ -71,7 +83,15 @@ export default {
 
 <style scoped>
 
-
+ .bdy{
+     position:absolute;
+     width: 100%;
+     height: 100%;
+     margin: 0;
+     background: #334d50;
+  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
+  background: linear-gradient(to right, #cbcaa5, #334d50);
+ }
     .maindiv2{
       display: flex;
       position: relative;
@@ -98,7 +118,7 @@ export default {
         top: 50%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
-        width: 50%;
+        width: 60%;
         margin:auto;
         color: rgba(255, 255, 255, 0.555);
     }
@@ -111,22 +131,7 @@ export default {
         margin:auto;
         color: rgba(255, 255, 255, 0.555);
     }
-    .square_btn{
-    display: inline-block;
-    padding: 7px 20px;
-    font-weight: bold;
-	border-radius: 25px;
-    text-decoration: none;
-    color: #FFF;
-    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-    transition: .4s;
-}
-
-.square_btn:hover {
-    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
-    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
-}
+ 
 
 
 
@@ -167,7 +172,7 @@ export default {
   font-size: 12px;
 }
 
- a {
+ .routerbtn {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -181,7 +186,7 @@ export default {
   letter-spacing: 4px
 }
 
- a:hover {
+ .routerbtn:hover {
   background:  #ff8b5f;
   color: rgba(255, 255, 255, 0.555);
   border-radius: 5px;
@@ -191,7 +196,7 @@ export default {
               0 0 100px  #ff8b5f;
 }
 
- a span {
+ .routerbtn span {
   position: absolute;
   display: block;
 }

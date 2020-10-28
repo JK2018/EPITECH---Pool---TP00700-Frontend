@@ -1,45 +1,50 @@
 <template>
-  <div class="maindiv2">
+<div class="bdy">
+    <div class="maindiv2">
 
-    <div class="innerDiv left">
-      <div class="description">
-        <h1>Welcome to Time Manager</h1>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-        <!--<a href="#" class="square_btn">Create account</a>-->
-        <router-link  to="/registration">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Register
-        </router-link>
+        <div class="innerDiv left">
+        <div class="description">
+            <h1>Welcome to Time Manager</h1>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem Sed ut perspiciatis Sed ut perspiciatis unde omnis iste natus error sit voluptatem unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            <!--<a href="#" class="square_btn">Create account</a>-->
+            <nav class="routerbtn">
+            <router-link  to="/register">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Register
+            </router-link>
+            </nav>
+        </div>
+        </div>
+        <div class="innerDiv right">
+        <div class="loginForm">
+            <h1>Sign in</h1>
+            <form>
+            <div class="user-box">
+                <input v-model="email" type="email" name="" required>
+                <label>Email Address</label>
+            </div>
+            <div class="user-box">
+                <input v-model="password" type="password" name="" required>
+                <label>Password</label>
+            </div>
+            <nav class="routerbtn">
+            <div class="formSubmit" v-on:click="signIn()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Sign In
+            </div>
+            </nav>
+            </form>
 
-      </div>
+        </div>
+        </div>
+
     </div>
-    <div class="innerDiv right">
-      <div class="loginForm">
-        <h1>Sign in</h1>
-        <form>
-          <div class="user-box">
-            <input type="text" name="" required>
-            <label>Email Address</label>
-          </div>
-          <div class="user-box">
-            <input type="password" name="" required>
-            <label>Password</label>
-          </div>
-          <a class="formSubmit" href="/dashboard">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Sign In
-          </a>
-        </form>
-
-      </div>
-    </div>
-
   </div>
 </template>
 
@@ -47,14 +52,28 @@
 
 
 <script>
-
+//import axios from 'axios'
 export default {
     name: 'login',
     data(){
         return{
+            password: "",
+            email: "",
 
         }
-    }
+    },
+    methods:{
+        signIn(){
+            
+            // post to api , 
+            //api get by email and pw,
+            //if ok then return xsrfToken, userId, roleId 
+            //store those in storage
+            //go to dashboard
+            this.$router.push({ name: 'user-dashboard' })
+        },
+        
+    },
     
 }
 </script>
@@ -62,7 +81,15 @@ export default {
 
 
 <style scoped>
-  
+ .bdy{
+     position:absolute;
+     width: 100%;
+     height: 100%;
+     margin: 0;
+     background: #334d50;
+  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
+  background: linear-gradient(to right, #cbcaa5, #334d50);
+ }
 
     .maindiv2{
         display: flex;
@@ -73,6 +100,7 @@ export default {
       margin-left: 10%;
         height: 700px;
         background-image: url('../assets/marble.jpg');
+        
     }
     .innerDiv{
         background-color:#272626;
@@ -90,7 +118,7 @@ export default {
         top: 50%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
-        width: 50%;
+        width: 60%;
         margin:auto;
         color: rgba(255, 255, 255, 0.555);
     }
@@ -103,22 +131,7 @@ export default {
         margin:auto;
         color: rgba(255, 255, 255, 0.555);
     }
-    .square_btn{
-    display: inline-block;
-    padding: 7px 20px;
-    font-weight: bold;
-	border-radius: 25px;
-    text-decoration: none;
-    color: #FFF;
-    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-    transition: .4s;
-}
-
-.square_btn:hover {
-    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
-    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
-}
+    
 
 
 
@@ -159,7 +172,7 @@ export default {
   font-size: 12px;
 }
 
- router-link {
+ .routerbtn {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -173,7 +186,7 @@ export default {
   letter-spacing: 4px
 }
 
- router-link:hover {
+ .routerbtn:hover {
   background:  #ff8b5f;
   color: rgba(255, 255, 255, 0.555);
   border-radius: 5px;
@@ -183,7 +196,7 @@ export default {
               0 0 100px  #ff8b5f;
 }
 
- router-link span {
+ .routerbtn span {
   position: absolute;
   display: block;
 }

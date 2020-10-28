@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    
     <router-view></router-view>
   </div>
 </template>
@@ -9,11 +10,21 @@
 export default {
   name: 'App',
   components: {
+    
+  },
+  data(){
+    return{
+      
+    }
   }
 }
 </script>
 
 <style>
+a { 
+  color: inherit; 
+  text-decoration: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,10 +34,7 @@ export default {
   height: 100%;
 }
 body {
-  font-family: 'Roboto';
-  background: #334d50;
-  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
-  background: linear-gradient(to right, #cbcaa5, #334d50);
-
+  font-family: 'Roboto', sans-serif;
+  background: #fff0d9;
 }
 </style>
