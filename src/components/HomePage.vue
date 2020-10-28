@@ -25,6 +25,10 @@
               icon-name="las la-calendar"
               text-name="Calendar"></BtnCustom>
           <BtnCustom
+              @click.native="getMenu(3)"
+              icon-name="las la-user-friends"
+              text-name="Userlist"></BtnCustom>
+          <BtnCustom
               @click.native="logout"
               icon-name="las la-sign-out-alt"
               text-name="Logout"></BtnCustom>
@@ -36,6 +40,7 @@
       <div class="dsh-container">
         <Dashboard v-if="menuType === 1"></Dashboard>
         <SearchUser v-if="menuType === 2"></SearchUser>
+        <UserList v-if="menuType === 3"></UserList>
       </div>
     </div>
 
@@ -46,10 +51,12 @@
 import BtnCustom from "@/custom-elements/BtnCustom";
 import Dashboard from "@/components/Dashboard";
 import SearchUser from "@/components/SearchUser";
+import UserList from "@/components/UserList";
 
 export default {
   name: "HomePage",
   components: {
+    UserList,
     SearchUser,
     Dashboard,
     BtnCustom,
