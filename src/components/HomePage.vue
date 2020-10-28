@@ -24,14 +24,19 @@
               @click.native="getMenu(2)"
               icon-name="las la-calendar"
               text-name="Calendar"></BtnCustom>
+          <BtnCustom
+              @click.native="logout"
+              icon-name="las la-sign-out-alt"
+              text-name="Logout"></BtnCustom>
         </div>
       </div>
     </div>
 
     <div class="dashboard">
-      <Dashboard v-if="menuType === 1"></Dashboard>
-      <SearchUser v-if="menuType === 2"></SearchUser>
-<!--      <router-view></router-view>-->
+      <div class="dsh-container">
+        <Dashboard v-if="menuType === 1"></Dashboard>
+        <SearchUser v-if="menuType === 2"></SearchUser>
+      </div>
     </div>
 
   </div>
@@ -54,6 +59,10 @@ export default {
     getMenu(val){
       this.menuType = val;
       console.log("Val = "+this.menuType)
+    },
+    logout(){
+      localStorage.clear();
+      this.$router.push({name:'login'});
     }
   },
   data() {
@@ -88,6 +97,11 @@ export default {
   width: 100%;
   height: 100%;
   color: black;
+}
+
+.dsh-container{
+  height: 100%;
+  padding: 30px;
 }
 
 .user-info {

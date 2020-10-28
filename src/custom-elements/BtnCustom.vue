@@ -22,6 +22,7 @@ export default {
     letter-spacing: 1px;
     display: inline-flex;
     margin: 15px;
+    cursor: pointer;
   }
 
   .btn-view i{
