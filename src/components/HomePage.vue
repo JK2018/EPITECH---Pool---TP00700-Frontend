@@ -100,7 +100,7 @@ export default {
 .dashboard {
   display: flex;
   flex-direction: column;
-  background-color: #f5ffd9;
+  
   width: 100%;
   height: 100%;
   color: black;
