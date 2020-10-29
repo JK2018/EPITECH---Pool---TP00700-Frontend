@@ -1,8 +1,8 @@
 <template>
-  <div class="btn-view">
+  <router-link :to=link class="btn-view">
     <i :class=iconName></i>
     <span >{{textName}}</span>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -10,7 +10,8 @@ export default {
   name: "BtnCustom",
   props: {
     textName: String,
-    iconName: String
+    iconName: String,
+    link: String
   }
 }
 </script>

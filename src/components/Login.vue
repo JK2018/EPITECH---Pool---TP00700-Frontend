@@ -57,8 +57,8 @@ export default {
   name: 'login',
   data(){
     return{
-      password: "",
-      email: "",
+      password: "test",
+      email: "test@test.com",
 
     }
   },
@@ -67,7 +67,7 @@ export default {
       if(this.email.trim() !== "" && this.password.trim() !== ""){
         if(this.email.trim() === "test@test.com" && this.password.trim() === "test"){
           localStorage.setItem("token","test");
-          this.$router.push({name:'homePage'});
+          this.$router.push({name:'dashboard'});
         }else{
           alert("Vérifier vos identifiants")
         }
