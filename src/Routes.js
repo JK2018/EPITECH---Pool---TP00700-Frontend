@@ -5,7 +5,6 @@ import Dashboard from "@/components/Dashboard";
 import UserList from "@/components/UserList";
 
 function guardMyRoute(to, from, next) {
-    console.log("haha: "+localStorage.getItem("token"));
     let isAuth = false;
     isAuth = localStorage.getItem("token") !== null;
     isAuth ? next() : next('/login')
@@ -13,9 +12,9 @@ function guardMyRoute(to, from, next) {
 
 export default [
     {path: '*', component: Login},
-    {path: '/login', beforeEnter: guardMyRoute,name:'login', component: Login},
-    {path: '/register', beforeEnter: guardMyRoute, name:'register', component: Registration},
+    {path: '/login', name:'login', component: Login},
+    {path: '/register', name:'register', component: Registration},
     {path: '/dashboard', beforeEnter: guardMyRoute, name:'dashboard', component: Dashboard},
     {path: '/homePage', beforeEnter: guardMyRoute, name:'homePage', component: HomePage},
-    {path: '/user-list', beforeEnter: guardMyRoute, name:'homePage', component: UserList}
+    {path: '/user-list', beforeEnter: guardMyRoute, name:'userList', component: UserList}
 ]
