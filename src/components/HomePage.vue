@@ -26,6 +26,7 @@ export default {
 
 .home-container{
   display: flex;
+  width: 100%;
 }
 
 </style>

@@ -23,6 +23,10 @@
             link="/app/user-list"
             icon-name="las la-user-friends"
             text-name="Userlist"></BtnCustom>
+        <BtnCustom
+            link="/app/profil"
+            icon-name="las la-user-cog"
+            text-name="Profil"></BtnCustom>
         <button
             v-on:click="logout">Logout</button>
       </div>

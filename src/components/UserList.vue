@@ -1,6 +1,6 @@
 <template>
 
-    <div class="main">
+    <div class="home-body">
 
         <div class="searchbar">
             <form action="" class="search-bar">
@@ -75,6 +75,10 @@ export default {
 
 
 <style scoped>
+
+.home-body{
+  width: 100%;
+}
 
 .usr-list{
     margin-top: 5%;
