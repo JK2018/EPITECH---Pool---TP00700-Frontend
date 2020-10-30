@@ -23,19 +23,23 @@
           <h1>Create Account</h1>
           <form>
             <div class="user-box">
-              <input type="text" name="" required>
+              <input v-model="userName" type="text" name="" required>
+              <label>User Name</label>
+            </div>
+            <div class="user-box">
+              <input v-model="firstName" type="text" name="" required>
               <label>First Name</label>
             </div>
             <div class="user-box">
-              <input type="text" name="" required>
+              <input v-model="lastName" type="text" name="" required>
               <label>Last Name</label>
             </div>
             <div class="user-box">
-              <input type="text" name="" required>
+              <input v-model="email" type="email" name="" required>
               <label>Email Address</label>
             </div>
             <div class="user-box">
-              <input type="password" name="" required>
+              <input v-model="password" type="password" name="" required>
               <label>Password</label>
             </div>
             <nav class="routerbtn">
@@ -61,18 +65,39 @@
 
 <script>
 
+import axios from "axios";
+
 export default {
   name: 'registration',
   data(){
     return{
-
+      userName: "Michel",
+      firstName: "Michel",
+      lastName: "Michel",
+      email: "Michel@michel.com",
+      password: "Michel",
     }
   },
   methods:{
     submitForm(){
-      // axios blablabla
-      // ...
-      this.$router.push({ name: 'login' })
+      //http://3.87.227.113:4000/test
+      axios.post("http://localhost:4000/sessions/sign_up", {
+        username: this.userName,
+        firstname: this.firstName,
+        lastname: this.lastName,
+        email: this.email,
+        password: this.password,
+      })
+      .then(function (res) {
+        console.log("Res = "+res);
+        console.log("data = "+res.data.result);
+        // this.$router.push({ name: 'login' })
+      })
+      .catch(function (err){
+        console.log(err.response.data);
+        console.log(err.response.status);
+      })
+      ;
     }
   }
 

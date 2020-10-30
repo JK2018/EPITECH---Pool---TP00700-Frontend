@@ -14,7 +14,6 @@
     </div>
     <div class="user-menu">
       <div class="icon-btn">
-
         <BtnCustom
             link="/app/dashboard"
             icon-name="las la-rocket"
@@ -27,6 +26,9 @@
             link="/app/profil"
             icon-name="las la-user-cog"
             text-name="Profil"></BtnCustom>
+        <button v-on:click="testprivateroute">
+          Test private route
+        </button>
         <button
             v-on:click="logout">Logout</button>
       </div>
@@ -36,6 +38,7 @@
 
 <script>
 import BtnCustom from "@/custom-elements/BtnCustom";
+import axios from "axios";
 export default {
   name: "SideBar",
   components: {
@@ -43,6 +46,18 @@ export default {
 
   },
   methods: {
+    testprivateroute(){
+      console.log("my token = "+localStorage.getItem('token'))
+      axios.get('http://localhost:4000/api/test',{
+        headers: {'Authorization': `${localStorage.getItem("token")}`}
+      })
+      .then(res=>{
+        console.log("Res= "+res.data)
+      })
+      .catch(err=>{
+        console.log("err="+err)
+      })
+    },
     logout(){
       localStorage.clear();
       this.$router.push({name:'login'});
