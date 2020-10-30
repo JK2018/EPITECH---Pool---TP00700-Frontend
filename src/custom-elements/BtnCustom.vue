@@ -22,17 +22,19 @@ export default {
     color: #242323;
     letter-spacing: 1px;
     display: inline-flex;
-    margin: 15px;
+    margin: 5px;
     cursor: pointer;
+    
   }
 
   .btn-view i{
     margin-right: 25px;
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .btn-view span{
-    font-size: 23px;
+    font-weight: bold;
     line-height: 33px;
+    font-size: 16px;
   }
 </style>

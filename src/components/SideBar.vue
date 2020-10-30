@@ -27,8 +27,11 @@
             link="/app/profil"
             icon-name="las la-user-cog"
             text-name="Profil"></BtnCustom>
-        <button
-            v-on:click="logout">Logout</button>
+          <div v-on:click="logout" class="btn-view">
+            <i class="fas fa-sign-out-alt"></i>
+            <span >Logout</span>
+          </div>
+       
       </div>
     </div>
   </div>
@@ -128,6 +131,25 @@ export default {
   text-align: center;
   color: #242323;
 }
+.btn-view{
+    text-decoration: none;
+    color: #242323;
+    letter-spacing: 1px;
+    display: inline-flex;
+    margin: 5px;
+    cursor: pointer;
+    
+  }
 
+  .btn-view i{
+    margin-right: 25px;
+    font-size: 30px;
+  }
+
+  .btn-view span{
+    font-weight: bold;
+    line-height: 33px;
+    font-size: 16px;
+  }
 
 </style>

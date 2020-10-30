@@ -60,13 +60,15 @@ export default {
 <style scoped>
 
 .circle{
-    margin: 1em auto;
+    margin: auto;
+    margin-top: 7%;
+    margin-bottom: 7%;
     height: 60%;
-    width: 85%;
+    width: 72%;
     -webkit-appearance: none;
     border: 6px solid rgba(255,255,255,0.45);
     border-radius: 50%;
-    background-color:#f0f0f0;
+    background-color:#fff0d9;
     position: relative;
     color: #f0f0f0;
     box-shadow:4px 3px 20px gray,
@@ -78,22 +80,21 @@ export default {
     -1px -1px 2px white;
 }
 
-p {
+/* p {
     margin: 0;
     padding: 0;
-}
+} */
 #clock {
     font-family: 'Share Tech Mono', monospace;
-    width: 200px;
+    width: 250px;
     height: 300px;
     text-align: center;
     border-radius: 5px;
     padding-top: 1px;
     padding-bottom: 3%;
     color:#f0f0f0;
-    background-color:#f0f0f0;
-    box-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
+    /* box-shadow:2px 2px 2px gray,
+    -1px -1px 2px white; */
 }
 .time {
     letter-spacing: 0.05em;
@@ -104,34 +105,34 @@ p {
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: rgb(197, 138, 138);
 }
 .date {
     letter-spacing: 0.1em;
     font-size: 20px;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
+    color: rgb(197, 138, 138);
     margin: 0;
     font-weight: bold;
 }
 .day {
     letter-spacing: 0.1em;
     font-size: 20px;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
+    
     margin: 0;
     padding-top: 22%;;
     font-weight: bold;
+    color: rgb(197, 138, 138);
 }
 button {
     height: 15%;
-    width: 90%;
+    width: 60%;
     margin:  auto;
     -webkit-appearance: none;
     border: 6px solid rgba(255,255,255,0.45);
     border-radius: 50px;
-    background-color:#f0f0f0;
+    background-color:#fff0d9;
     position: relative;
-    color: #f0f0f0;
+    color: rgb(197, 138, 138);
     box-shadow:4px 3px 20px gray,
     -3px -4px 6px white;
     letter-spacing: 0.05em;

@@ -3,12 +3,9 @@
     <div class="home-body">
 
         <div class="searchbar">
-            <form action="" class="search-bar">
-                <input type="search" name="search" pattern=".*\S.*" required>
-                <button class="search-btn" type="submit">
-                </button>
-              
-            </form>
+            <div class="sbar">
+                <SearchBar></SearchBar>
+            </div>
             <div class="tglbtn-container">
                 <i class="fas fa-user fa-2x"></i>
                 <div class="tglbtn">
@@ -18,19 +15,22 @@
                 <i class="fas fa-users fa-2x" style="margin-left: 5px;"></i>
             </div>
         </div>
+
+
+
         <div class="usr-list">
             <div class="usr">
-                <p class="usr-content-name">John Rambo</p>
-                <p class="usr-content-email" >rambo@pwn.com</p>
+                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i> John Rambo</p> 
+                <p class="usr-content-email">rambo@pwn.com</p>
                 <p class="usr-content-team" >Team n° 357</p>
             </div>
             <div class="usr">
-                <p class="usr-content-name">John Doe</p>
+                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i>John Doe</p>
                 <p class="usr-content-email" >jd@gmail.com</p>
                 <p class="usr-content-team" >Team n° 12</p>
             </div>
             <div class="usr">
-                <p class="usr-content-name">Roger Rabbit</p>
+                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i>Roger Rabbit</p>
                 <p class="usr-content-email" >eadzedaedazed@gmail.com</p>
                 <p class="usr-content-team" >Team n° 9</p>
             </div>
@@ -51,10 +51,10 @@
 
 
 <script>
-
+import SearchBar from '../custom-elements/SearchBar.vue'
 export default {
     components: {
-        
+        SearchBar
     },
     data(){
         return{
@@ -75,7 +75,15 @@ export default {
 
 
 <style scoped>
-
+i{ 
+    font-size: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.sbar{
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
 .home-body{
   width: 100%;
 }
@@ -101,7 +109,7 @@ i{
     position: relative;
     margin: auto;
     height: 30px;
-    width: 70%;
+    width: 90%;
     box-shadow: rgb(199, 199, 199) -4px 4px .2em;
     border-radius: .375em;
     margin-bottom: 10px;
@@ -147,12 +155,6 @@ i{
 {
     -webkit-tap-highlight-color: transparent;
 }
-
-
-
-
-
-
 
 #toggle_checkbox
 {
@@ -218,167 +220,10 @@ label:before, label:after
     border-color: grey;
 }
 
-
-
-
-
-
-
-
 * {
 	border: 0;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
-:root {
-	font-size: calc(16px + (24 - 16)*(100vw - 320px)/(1920 - 320));
-}
-button, input {
-	font: 1em Hind, sans-serif;
-	line-height: 1.5em;
-}
- input {
-	color: #171717;
-    
-}
- .search-bar {
-	display: flex;
-    width: 100px;
-    height: 85px;
-    margin-bottom: 20px;
-    
-}
-
-.search-bar input,
-.search-btn, 
-.search-btn:before, 
-.search-btn:after {
-	transition: all 0.25s ease-out;
-}
-.search-bar input,
-.search-btn {
-	width: 3em;
-	height: 3em;
-}
-.search-bar input:invalid:not(:focus),
-.search-btn {
-	cursor: pointer;
-}
-.search-bar,
-.search-bar input:focus,
-.search-bar input:valid  {
-	width: 100%;
-}
-.search-bar input:focus,
-.search-bar input:not(:focus) + .search-btn:focus {
-	outline: transparent;
-}
-.search-bar {
-	margin: auto;
-	padding: 1.5em;
-	justify-content: center;
-	max-width: 70%;
-}
-.search-bar input {
-	background: transparent;
-	border-radius: 1.5em;
-	box-shadow: 0 0 0 0.4em #171717 inset;
-	padding: 0.75em;
-	transform: translate(0.5em,0.5em) scale(0.5);
-	transform-origin: 100% 0;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
-.search-bar input::-webkit-search-decoration {
-	-webkit-appearance: none;
-}
-.search-bar input:focus,
-.search-bar input:valid {
-	background: #fff0d9;
-	border-radius: 0.375em 0 0 0.375em;
-	box-shadow: 0 0 0 0.1em #fff0d9 inset;
-	transform: scale(1);
-}
-.search-btn {
-	background: #171717;
-	border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
-	padding: 0.75em;
-	position: relative;
-	transform: translate(0.25em,0.25em) rotate(45deg) scale(0.25,0.125);
-	transform-origin: 0 50%;
-}
-.search-btn:before, 
-.search-btn:after {
-	content: "";
-	display: block;
-	opacity: 0;
-	position: absolute;
-}
-.search-btn:before {
-	border-radius: 50%;
-	box-shadow: 0 0 0 0.2em #fff0d9 inset;
-	top: 0.75em;
-	left: 0.75em;
-	width: 1.2em;
-	height: 1.2em;
-}
-.search-btn:after {
-	background: #fff0d9;
-	border-radius: 0 0.25em 0.25em 0;
-	top: 51%;
-	left: 51%;
-	width: 0.75em;
-	height: 0.25em;
-	transform: translate(0.2em,0) rotate(45deg);
-	transform-origin: 0 50%;
-}
-.search-btn span {
-	display: inline-block;
-	overflow: hidden;
-	width: 1px;
-	height: 1px;
-}
-
-/* Active state */
-.search-bar input:focus + .search-btn,
-.search-bar input:valid + .search-btn {
-	background: #334d50;
-  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
-  background: linear-gradient(to right, #cbcaa5, #334d50);
-	border-radius: 0 0.375em 0.375em 0;
-	transform: scale(1);
-}
-.search-bar input:focus + .search-btn:before, 
-.search-bar input:focus + .search-btn:after,
-.search-bar input:valid + .search-btn:before, 
-.search-bar input:valid + .search-btn:after {
-	opacity: 1;
-}
-.search-bar input:focus + .search-btn:hover,
-.search-bar input:valid + .search-btn:hover,
-.search-bar input:valid:not(:focus) + .search-btn:focus {
-	background: #334d50;
-}
-.search-bar input:focus + .search-btn:active,
-.search-bar input:valid + .search-btn:active {
-	transform: translateY(1px);
-}
-
-@media screen and (prefers-color-scheme: dark) {
-	
-	.search-bar input {
-		box-shadow: 0 0 0 0.4em grey inset;
-	}
-	.search-bar input:focus,
-	.search-bar input:valid {
-		background: #fff0d9;
-		box-shadow: rgb(199, 199, 199) -3px 3px .3em;
-	}
-	.search-btn {
-		background: grey;
-	}
-}
-
 </style>
