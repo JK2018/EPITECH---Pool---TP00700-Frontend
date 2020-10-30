@@ -29,17 +29,18 @@ export default {
 
 
 
-<style>
+<style lang="scss" scoped>
+
+$font:grey;
+$background:#fff0d9;
+$shadow1:#fdfdfd;
+$shadow2:#cbc19d;
 
 
 *
 {
     outline: none;
 }
-
-
-
-
 
 .tb
 {
@@ -55,7 +56,7 @@ export default {
 
 input, button
 {
-    color: grey;
+    color: $font;
     font-family: Nunito;
     padding: 0;
     margin: 0;
@@ -73,9 +74,9 @@ input, button
     
     margin-top: 10px;
     margin:auto;
-    background-color: #fff0d9;
+    background-color: $background;
     border-radius: 10px;
-    box-shadow: 0 10px 40px #fdfdfd, 0 0 0 10px #cbc19d;
+    box-shadow: 0 10px 40px $shadow1, 0 0 0 10px $shadow2;
     transform: scale(0.6);
 }
 
@@ -94,7 +95,7 @@ input[type="text"]
 
 input[type="text"]::placeholder
 {
-    color: grey;
+    color: $font;
 }
 
 #s-cover
@@ -121,7 +122,7 @@ button
     height: 25px;
     margin-top: 0;
     border-width: 15px;
-    border: 8px solid grey;
+    border: 8px solid $font;
     background-color: transparent;
     border-radius: 50%;
     transition: 0.5s ease all;
@@ -149,7 +150,7 @@ button span:before, button span:after
     right: 0;
     width: 35px;
     height: 10px;
-    background-color: grey;
+    background-color: $font;
     border-radius: 10px;
     transform: rotateZ(0);
     transition: 0.5s ease all;
@@ -162,7 +163,7 @@ button span:before, button span:after
     width: 57px;
     height: 10px;
     border-width: 0;
-    background-color: grey;
+    background-color:$font;
     border-radius: 20px;
 }
 
@@ -190,7 +191,7 @@ button span:before, button span:after
 {
     right: 6px;
     width: 30px;
-    background-color: grey;
+    background-color: $font;
 }
 
 #ytd-url {

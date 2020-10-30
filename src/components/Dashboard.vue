@@ -10,16 +10,16 @@
           
           <div class="elems">
             <div class="elm">
-              <p class="e1">Time worked this Month : 140 hours</p>
-              <p class="e1">Time worked this Week : 40 hours</p>
-              <p class="e1">Days to recuperate : 3 days</p>
-              <p class="e2">Your Manager : Ludivine Fabri</p>
+              <p class="e1">Time worked this Month : <span> 140 hours </span></p>
+              <p class="e1">Time worked this Week : <span> 40 hours</span></p>
+              <p class="e1">Days to recuperate : <span> 3 days</span></p>
+              <p class="e2">Your Manager : <span> James Bond</span></p>
             </div>
           
             <div class="elm">
-              <p class="e2">Clocked in today at : 7h25</p>
-              <p class="e2">Clocked out today at : pending</p>
-              <p class="e1">Team N° : 134</p>
+              <p class="e2">Clocked in today at : <span> 7h22</span></p>
+              <p class="e2">Clocked out today at : <span> pending</span></p>
+              <p class="e1">Team N° : <span> 134</span></p>
             </div>
           </div>
           
@@ -126,7 +126,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+$fontCol1: grey;
+$fontCol2: rgb(197, 138, 138);
+
+span{
+  color:$fontCol2;
+}
 .top{
   height: 40%;
   width: 100%;
@@ -142,7 +149,7 @@ export default {
   width: 100%;
 }
 .main{
-  width: 80%;
+  width: 100%;
   height: 100%;
   position: relative;
 }
@@ -165,11 +172,11 @@ export default {
   margin-top: 0px;
   height: 25%;
   width: 100%;
-  color: grey;
+  color: $fontCol1;
 }
 .elems{
   font-weight: bold;
-  color: grey;
+  color: $fontCol1;
   display: flex;
   width: 100%;
 }

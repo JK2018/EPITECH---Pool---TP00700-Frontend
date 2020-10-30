@@ -13,7 +13,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+$background:#fff0d9;
+$font:#2c3e50;
+
 a {
   color: inherit;
   text-decoration: none;
@@ -23,13 +27,13 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $font;
   height: 100%;
   display: flex;
   flex-direction: row;
 }
 body {
   font-family: 'Roboto', sans-serif;
-  background: #fff0d9;
+  background: $background;
 }
 </style>

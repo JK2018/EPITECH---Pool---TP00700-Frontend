@@ -18,7 +18,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
   .btn-clock{
     letter-spacing: 1px;
     display: inline-flex;

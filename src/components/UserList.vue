@@ -25,12 +25,12 @@
                 <p class="usr-content-team" >Team n° 357</p>
             </div>
             <div class="usr">
-                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i>John Doe</p>
+                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i> John Doe</p>
                 <p class="usr-content-email" >jd@gmail.com</p>
                 <p class="usr-content-team" >Team n° 12</p>
             </div>
             <div class="usr">
-                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i>Roger Rabbit</p>
+                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i> Roger Rabbit</p>
                 <p class="usr-content-email" >eadzedaedazed@gmail.com</p>
                 <p class="usr-content-team" >Team n° 9</p>
             </div>
@@ -74,11 +74,24 @@ export default {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
+
+
+$background:#cbcaa5;
+$border1: grey;
+$background2: #334d50;
+
+
 i{ 
     font-size: 18px;
     margin-left: 2px;
     margin-right: 2px;
+    font-weight: bold;
+    color: $border1;
+}
+p{
+    font-weight: bold;
+    color: $border1;
 }
 .sbar{
     margin-top: 3%;
@@ -97,9 +110,7 @@ i{
     width: 110px;
     margin: auto;
 }
-i{
-    color: grey;
-}
+
 .tglbtn{
     width: 55px; 
     margin:auto;
@@ -179,8 +190,8 @@ label:before
     left: 6px;
     width: 18px;
     height: 18px;
-    background: #cbcaa5;
-    border: 3px solid #cbcaa5;
+    background: $background;
+    border: 3px solid $background;
 }
 
 label:after
@@ -189,7 +200,7 @@ label:after
     right: 0;
     width: 40px;
     height: 24px;
-    border: 3px solid grey;
+    border: 3px solid $border1;
 }
 
 label:before, label:after
@@ -207,8 +218,8 @@ label:before, label:after
     left: 24px;
     width: 18px;
     height: 18px;
-    background: #334d50;
-    border-color: #334d50;
+    background: $background2;
+    border-color: $background2;
 }
 
 #toggle_checkbox:checked + label:after
@@ -217,7 +228,7 @@ label:before, label:after
     right: 0px;
     width: 40px;
     height: 24px;
-    border-color: grey;
+    border-color: $border1;
 }
 
 * {

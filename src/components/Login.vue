@@ -82,15 +82,23 @@ export default {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
+
+$gradiantCol1: #cbcaa5;
+$gradiantCol2: #334d50;
+$btnCol:#ff8b5f;
+$divBackgroundCol:#272626;
+$fontCol:rgba(255, 255, 255, 0.555);
+
+
 .bdy{
   position:absolute;
   width: 100%;
   height: 100%;
   margin: 0;
-  background: #334d50;
-  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
-  background: linear-gradient(to right, #cbcaa5, #334d50);
+  background: $gradiantCol2;
+  background: -webkit-linear-gradient(to right, $gradiantCol1, $gradiantCol2);
+  background: linear-gradient(to right, $gradiantCol1, $gradiantCol2);
 }
 
 .maindiv2{
@@ -105,7 +113,7 @@ export default {
 
 }
 .innerDiv{
-  background-color:#272626;
+  background-color: $divBackgroundCol;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 .innerDiv.left{
@@ -122,7 +130,7 @@ export default {
   transform: translateY(-50%);
   width: 60%;
   margin:auto;
-  color: rgba(255, 255, 255, 0.555);
+  color: $fontCol;
 }
 .loginForm{
   position: relative;
@@ -131,7 +139,7 @@ export default {
   transform: translateY(-50%);
   width: 50%;
   margin:auto;
-  color: rgba(255, 255, 255, 0.555);
+  color: $fontCol;
 }
 
 
@@ -148,10 +156,10 @@ export default {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.555);
+  color: $fontCol;
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.555);
+  border-bottom: 1px solid $fontCol;
   outline: none;
   background: transparent;
 }
@@ -161,7 +169,7 @@ export default {
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.555);
+  color: $fontCol;
   pointer-events: none;
   transition: .5s;
 }
@@ -170,7 +178,7 @@ export default {
 .loginForm .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #ff8b5f;
+  color: $btnCol;
   font-size: 12px;
 }
 
@@ -178,7 +186,7 @@ export default {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: #ff8b5f;
+  color: $btnCol;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -189,13 +197,13 @@ export default {
 }
 
 .routerbtn:hover {
-  background:  #ff8b5f;
-  color: rgba(255, 255, 255, 0.555);
+  background:  $btnCol;
+  color: $fontCol;
   border-radius: 5px;
-  box-shadow: 0 0 5px  #ff8b5f,
-  0 0 25px #ff8b5f,
-  0 0 50px  #ff8b5f,
-  0 0 100px  #ff8b5f;
+  box-shadow: 0 0 5px  $btnCol,
+  0 0 25px $btnCol,
+  0 0 50px  $btnCol,
+  0 0 100px  $btnCol;
 }
 
 .routerbtn span {
@@ -208,7 +216,7 @@ export default {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent,  #ff8b5f);
+  background: linear-gradient(90deg, transparent,  $btnCol);
   animation: btn-anim1 1s linear infinite;
 }
 
@@ -226,7 +234,7 @@ export default {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent,  #ff8b5f);
+  background: linear-gradient(180deg, transparent,  $btnCol);
   animation: btn-anim2 1s linear infinite;
   animation-delay: .25s
 }
@@ -245,7 +253,7 @@ export default {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent,  #ff8b5f);
+  background: linear-gradient(270deg, transparent,  $btnCol);
   animation: btn-anim3 1s linear infinite;
   animation-delay: .5s
 }
@@ -264,7 +272,7 @@ export default {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent,  #ff8b5f);
+  background: linear-gradient(360deg, transparent,  $btnCol);
   animation: btn-anim4 1s linear infinite;
   animation-delay: .75s
 }

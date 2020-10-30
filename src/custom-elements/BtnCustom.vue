@@ -16,10 +16,17 @@ export default {
 }
 </script>
 
-<style scoped>
+
+
+
+
+<style lang="scss" scoped>
+
+$fontCol:#242323;
+
   .btn-view{
     text-decoration: none;
-    color: #242323;
+    color: $fontCol;
     letter-spacing: 1px;
     display: inline-flex;
     margin: 5px;

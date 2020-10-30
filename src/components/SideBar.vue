@@ -59,13 +59,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+$background: #cbc19d;
+$backgroundAvatar: #393235;
+$fontCol: #242323;
+
+
 .sidebar {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background-color: #cbc19d;
-  /*background-color: #151012;*/
+  background-color: $background;
   width: 300px;
 }
 
@@ -96,7 +101,7 @@ export default {
   position: absolute;
   border-radius: 50%;
   z-index: 0;
-  background-color: #393235;
+  background-color: $backgroundAvatar;
   left: 0;
   right: 0;
   top: 0;
@@ -109,11 +114,6 @@ export default {
   flex-direction: column;
 }
 
-
-/*@font-face {*/
-/*  font-family: bransleyBold;*/
-/*  src: url("");*/
-/*}*/
 
 .welcome-txt{
   font-family: bransleyLight;
@@ -129,11 +129,11 @@ export default {
 
 .user-name {
   text-align: center;
-  color: #242323;
+  color: $fontCol;
 }
 .btn-view{
     text-decoration: none;
-    color: #242323;
+    color: $fontCol;
     letter-spacing: 1px;
     display: inline-flex;
     margin: 5px;

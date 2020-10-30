@@ -57,7 +57,12 @@ export default {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
+
+$fontCol2: rgb(197, 138, 138);
+$shadow1:grey;
+$shadow2:white;
+$background:#fff0d9;
 
 .circle{
     margin: auto;
@@ -68,22 +73,19 @@ export default {
     -webkit-appearance: none;
     border: 6px solid rgba(255,255,255,0.45);
     border-radius: 50%;
-    background-color:#fff0d9;
+    background-color:$background;
     position: relative;
     color: #f0f0f0;
-    box-shadow:4px 3px 20px gray,
-    -3px -4px 6px white;
+    box-shadow:4px 3px 20px $shadow1,
+    -3px -4px 6px $shadow2;
     letter-spacing: 0.05em;
     font-size: 30px;
     font-weight: bold;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
+    text-shadow:2px 2px 2px $shadow1,
+    -1px -1px 2px $shadow2;
 }
 
-/* p {
-    margin: 0;
-    padding: 0;
-} */
+
 #clock {
     font-family: 'Share Tech Mono', monospace;
     width: 250px;
@@ -93,24 +95,22 @@ export default {
     padding-top: 1px;
     padding-bottom: 3%;
     color:#f0f0f0;
-    /* box-shadow:2px 2px 2px gray,
-    -1px -1px 2px white; */
 }
 .time {
     letter-spacing: 0.05em;
     font-size: 35px;
     font-weight: bold;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
+    text-shadow:2px 2px 2px $shadow1,
+    -1px -1px 2px $shadow2;
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: rgb(197, 138, 138);
+    color: $fontCol2;
 }
 .date {
     letter-spacing: 0.1em;
     font-size: 20px;
-    color: rgb(197, 138, 138);
+    color: $fontCol2;
     margin: 0;
     font-weight: bold;
 }
@@ -121,7 +121,7 @@ export default {
     margin: 0;
     padding-top: 22%;;
     font-weight: bold;
-    color: rgb(197, 138, 138);
+    color: $fontCol2;
 }
 button {
     height: 15%;
@@ -130,16 +130,16 @@ button {
     -webkit-appearance: none;
     border: 6px solid rgba(255,255,255,0.45);
     border-radius: 50px;
-    background-color:#fff0d9;
+    background-color:$background;
     position: relative;
-    color: rgb(197, 138, 138);
-    box-shadow:4px 3px 20px gray,
-    -3px -4px 6px white;
+    color: $fontCol2;
+    box-shadow:4px 3px 20px $shadow1,
+    -3px -4px 6px $shadow2;
     letter-spacing: 0.05em;
     font-size: 22px;
     font-weight: bold;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;    
+    text-shadow:2px 2px 2px $shadow1,
+    -1px -1px 2px $shadow2;    
 }
 
 
