@@ -7,11 +7,6 @@
             <p class="date">{{ date }}</p>
         </div>
         <button class="button2">Clock</button>
-
-        
-        
-            
-        
     </div>
 
 </template>
