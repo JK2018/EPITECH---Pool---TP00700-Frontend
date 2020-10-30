@@ -3,6 +3,7 @@ import Registration from './components/Registration.vue';
 import Dashboard from "@/components/Dashboard";
 import UserList from "@/components/UserList";
 import HomePage from "@/components/HomePage";
+import Profil from "./components/Profil";
 
 function guardMyRoute(to, from, next) {
     let isAuth = false;
@@ -17,6 +18,7 @@ export default [
         children: [
             {path: 'dashboard', name:'dashboard', component: Dashboard},
             {path: 'user-list', name:'userList', component: UserList},
+            {path: 'profil', name:'profil', component: Profil},
         ]
     },
     {path: '*', redirect: '/app/dashboard'},
