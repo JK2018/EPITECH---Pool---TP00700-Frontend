@@ -49,10 +49,10 @@ export default {
     testprivateroute(){
       console.log("my token = "+localStorage.getItem('token'))
       axios.get('http://localhost:4000/api/test',{
-        headers: {'Authorization': `${localStorage.getItem("token")}`}
+        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
       })
       .then(res=>{
-        console.log("Res= "+res.data)
+        console.log("Res= "+JSON.stringify(res.data,null,4))
       })
       .catch(err=>{
         console.log("err="+err)
