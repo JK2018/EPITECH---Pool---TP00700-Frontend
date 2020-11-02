@@ -7,12 +7,12 @@
                 <SearchBar></SearchBar>
             </div>
             <div class="tglbtn-container">
-                <i class="fas fa-user fa-2x"></i>
+                <i class="fas fa-user fa-2x" style="margin-left: 5px; font-size:30px;"></i>
                 <div class="tglbtn">
                     <input type="checkbox" id="toggle_checkbox">
                     <label for="toggle_checkbox"></label>  
                 </div>
-                <i class="fas fa-users fa-2x" style="margin-left: 5px;"></i>
+                <i class="fas fa-users fa-2x" style="margin-left: 5px; font-size:30px;"></i>
             </div>
         </div>
 
