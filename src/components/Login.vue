@@ -52,25 +52,35 @@
 
 
 <script>
-//import axios from 'axios'
+import axios from "axios";
+
 export default {
   name: 'login',
   data(){
     return{
-      password: "test",
-      email: "test@test.com",
+      password: "Michel",
+      email: "Michel@michel.com",
 
     }
   },
   methods: {
     login(){
       if(this.email.trim() !== "" && this.password.trim() !== ""){
-        if(this.email.trim() === "test@test.com" && this.password.trim() === "test"){
-          localStorage.setItem("token","test");
-          this.$router.push({name:'dashboard'});
-        }else{
-          alert("Vérifier vos identifiants")
-        }
+        axios.post("http://localhost:4000/sessions/sign_in", {
+          email: this.email,
+          password: this.password,
+        })
+            .then(function (res) {
+              console.log("Data = "+JSON.stringify(res,null,4));
+              if(res.status === 200){
+                localStorage.setItem("token",res.data.token);
+                // this.$router.push({name:'dashboard'});
+                window.location.href = "/app/dashboard"
+              }
+            })
+            .catch(function (err){
+              console.log("Err = "+err);
+            })
       }else{
         alert("Veuillez remplir vos champs")
       }

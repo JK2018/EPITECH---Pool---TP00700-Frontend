@@ -14,7 +14,6 @@
 <script>
 export default {
     name: 'clock',
-    el: '#clock',
     data() {
         return {
             time: '',

@@ -14,7 +14,6 @@
     </div>
     <div class="user-menu">
       <div class="icon-btn">
-
         <BtnCustom
             link="/app/dashboard"
             icon-name="las la-rocket"
@@ -39,6 +38,7 @@
 
 <script>
 import BtnCustom from "@/custom-elements/BtnCustom";
+import axios from "axios";
 export default {
   name: "SideBar",
   components: {
@@ -46,6 +46,18 @@ export default {
 
   },
   methods: {
+    testprivateroute(){
+      console.log("my token = "+localStorage.getItem('token'))
+      axios.get('http://localhost:4000/api/test',{
+        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+      })
+      .then(res=>{
+        console.log("Res= "+JSON.stringify(res.data,null,4))
+      })
+      .catch(err=>{
+        console.log("err="+err)
+      })
+    },
     logout(){
       localStorage.clear();
       this.$router.push({name:'login'});
