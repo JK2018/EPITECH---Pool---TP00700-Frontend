@@ -6,7 +6,7 @@
         <img style="width: 100%; left: 100%" src="../assets/avat.png" alt="Avatar" class="round-avatar marg" >
       </div>
 
-      <div>
+      <form @submit="passwordAccept">
 
         <div class="input-container">
           <input type="text" v-model="userName" required=""/>
@@ -24,18 +24,18 @@
         </div>
 
         <div class="input-container">
-          <input type="text" v-model="email" required=""/>
+          <input type="email" v-model="email" required=""/>
           <label>Email</label>
         </div>
 
         <div class="input-container">
-          <input v-model="password" type="password" required=""/>
-          <label>Password</label>
+          <input v-model="password" type="password"/>
+          <label>New password</label>
         </div>
 
-        <button v-on:click="passwordAccept" class="button">Submit</button>
+        <button type="submit" class="button">Submit</button>
 
-      </div>
+      </form>
     </div>
 
   </div>
@@ -74,22 +74,41 @@ export default {
     }
   },
   methods: {
-    passwordAccept() {
-      axios.put('http://localhost:4000/api/users/'+localStorage.getItem("id"),{
-        username: this.userName,
-        firstname: this.firstName,
-        lastname: this.lastName,
-        email: this.email,
-        password: this.password,
-      }, {
-        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
-      })
-          .then(res=>{
-            console.log("Res update= "+JSON.stringify(res.data,null,4));
-          })
-          .catch(err=>{
-            console.log("err="+err)
-          })
+    passwordAccept: function (e){
+      if(this.password.trim() !== "" || this.password.trim() !== undefined){
+        axios.put('http://localhost:4000/api/users/'+localStorage.getItem("id"),{
+          username: this.userName,
+          firstname: this.firstName,
+          lastname: this.lastName,
+          email: this.email,
+          password: this.password,
+        }, {
+          headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+        })
+            .then(res=>{
+              console.log("Res update= "+JSON.stringify(res.data,null,4));
+            })
+            .catch(err=>{
+              console.log("err="+err)
+            })
+      }else{
+        axios.put('http://localhost:4000/api/users/'+localStorage.getItem("id"),{
+          username: this.userName,
+          firstname: this.firstName,
+          lastname: this.lastName,
+          email: this.email,
+          // password: this.password,
+        }, {
+          headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+        })
+            .then(res=>{
+              console.log("Res update= "+JSON.stringify(res.data,null,4));
+            })
+            .catch(err=>{
+              console.log("err="+err)
+            })
+      }
+      e.preventDefault();
     },
   }
 }
