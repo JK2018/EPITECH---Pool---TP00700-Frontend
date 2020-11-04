@@ -69,7 +69,7 @@ export default {
     },
     created() {
 
-        axios.get(`http://localhost:4000/api/users/${localStorage.getItem("userId")}`, {
+        axios.get(`http://localhost:4000/api/users/${localStorage.getItem("id")}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }

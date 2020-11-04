@@ -93,14 +93,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$gradiantCol1: #cbcaa5;
+$gradiantCol2: #334d50;
+$btnCol:#ff8b5f;
+$divBackgroundCol:#272626;
+$fontCol:rgba(255, 255, 255, 0.555);
+
 .bdy {
     position: absolute;
     width: 100%;
     height: 100%;
     margin: 0;
     background: #334d50;
-    background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);
-    background: linear-gradient(to right, #cbcaa5, #334d50);
+    background: -webkit-linear-gradient(to right, $gradiantCol1, $gradiantCol2);
+    background: linear-gradient(to right, $gradiantCol1, $gradiantCol2);
 }
 
 .maindiv2 {
@@ -135,7 +141,7 @@ export default {
     transform: translateY(-50%);
     width: 60%;
     margin: auto;
-    color: rgba(255, 255, 255, 0.555);
+    color: $fontCol;
 }
 
 .loginForm {
@@ -145,7 +151,7 @@ export default {
     transform: translateY(-50%);
     width: 50%;
     margin: auto;
-    color: rgba(255, 255, 255, 0.555);
+    color: $fontCol;
 }
 
 .loginForm .user-box {
