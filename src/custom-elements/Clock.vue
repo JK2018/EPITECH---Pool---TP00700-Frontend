@@ -1,144 +1,129 @@
 <template>
-
-    <div id="clock">
-        <div class="circle">
-            <p class="day">{{ day }}</p>
-            <p class="time">{{ time }}</p>
-            <p class="date">{{ date }}</p>
-        </div>
-        <button class="button2">Clock</button>
+  <div class="head-clock">
+    <div style="font-size: 14px; margin-right: 20px">
+      Click on your timer ->
     </div>
 
+    <!-- <b-icon icon="bell-fill" class="border rounded p-2"></b-icon> -->
+    <div class="clock-number">
+      {{ formattedElapsedTime }}
+    </div>
+
+    <b-button :disabled="started" style="margin-right: 10px" @click="start"
+      >Record</b-button
+    >
+    <b-button :disabled="!started" @click="reset">Stop</b-button>
+  </div>
 </template>
-
-<script>
-export default {
-    name: 'clock',
-    data() {
-        return {
-            time: '',
-            date: '',
-            day: '',
-            week : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            month : ['JAN','FEB','MAR','APR','MAY','JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC'],
-            timerID: 0
-        }
-    },
-    created(){
-        
-        this.timerID = setInterval(this.updateTime, 1000);
-        this.updateTime();
-    },
-    methods: {
-        zeroPadding(num, digit) {
-            var zero = '';
-            for(var i = 0; i < digit; i++) {
-                zero += '0';
-            }
-            return (zero + num).slice(-digit);
-        },
-        updateTime() {
-            var cd = new Date();
-            this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2) ;
-            this.date =  this.zeroPadding(this.month[cd.getMonth()], 3) + ' ' + this.zeroPadding(cd.getDate(), 2) ;
-            this.day = this.week[cd.getDay()];
-        }
-    }
-}
-</script>
-
-
-
-
-
-
-
-
-
-
 <style scoped>
+.head-clock {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0 20px;
 
-.circle{
-    margin: 1em auto;
-    height: 60%;
-    width: 85%;
-    -webkit-appearance: none;
-    border: 6px solid rgba(255,255,255,0.45);
-    border-radius: 50%;
-    background-color:#f0f0f0;
-    position: relative;
-    color: #f0f0f0;
-    box-shadow:4px 3px 20px gray,
-    -3px -4px 6px white;
-    letter-spacing: 0.05em;
-    font-size: 30px;
-    font-weight: bold;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 3px 4px -2px grey;
+}
+
+.clock-number {
+  font-size: 22px;
+  margin-right: 20px;
+  font-weight: 600;
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  text-align: center;
+  font-size: 24px;
 }
-#clock {
-    font-family: 'Share Tech Mono', monospace;
-    width: 200px;
-    height: 300px;
-    text-align: center;
-    border-radius: 5px;
-    padding-top: 1px;
-    padding-bottom: 3%;
-    color:#f0f0f0;
-    background-color:#f0f0f0;
-    box-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
-}
-.time {
-    letter-spacing: 0.05em;
-    font-size: 35px;
-    font-weight: bold;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.date {
-    letter-spacing: 0.1em;
-    font-size: 20px;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
-    margin: 0;
-    font-weight: bold;
-}
-.day {
-    letter-spacing: 0.1em;
-    font-size: 20px;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;
-    margin: 0;
-    padding-top: 22%;;
-    font-weight: bold;
-}
-button {
-    height: 15%;
-    width: 90%;
-    margin:  auto;
-    -webkit-appearance: none;
-    border: 6px solid rgba(255,255,255,0.45);
-    border-radius: 50px;
-    background-color:#f0f0f0;
-    position: relative;
-    color: #f0f0f0;
-    box-shadow:4px 3px 20px gray,
-    -3px -4px 6px white;
-    letter-spacing: 0.05em;
-    font-size: 22px;
-    font-weight: bold;
-    text-shadow:2px 2px 2px gray,
-    -1px -1px 2px white;    
-}
-
-
 </style>
+
+<script>
+import axios from "axios";
+import { BButton } from "bootstrap-vue";
+
+export default {
+  name: "clock",
+  components: { BButton },
+  data() {
+    return {
+      elapsedTime: 0,
+      timer: undefined,
+      started: false,
+    };
+  },
+  computed: {
+    formattedElapsedTime() {
+      const date = new Date(null);
+      date.setSeconds(this.elapsedTime / 1000);
+      const utc = date.toUTCString();
+      return utc.substr(utc.indexOf(":") - 2, 8);
+    },
+  },
+  mounted: function () {
+    axios
+      .post(
+        "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("Res= " + JSON.stringify(res.data, null, 4));
+        this.started = true;
+      })
+      .catch((err) => {
+        console.log("err=" + err);
+      });
+  },
+  methods: {
+    start() {
+      if (this.started === false) {
+        this.timer = setInterval(() => {
+          this.elapsedTime += 1000;
+        }, 1000);
+        axios
+          .post(
+            "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((res) => {
+            console.log("Res= " + JSON.stringify(res.data, null, 4));
+            this.started = true;
+          })
+          .catch((err) => {
+            console.log("err=" + err);
+          });
+      }
+    },
+    reset() {
+      clearInterval(this.timer);
+      this.elapsedTime = 0;
+
+      axios
+        .post("http://localhost:4000/api/clock/" + localStorage.getItem("id"), {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        })
+        .then((res) => {
+          console.log("Res= " + JSON.stringify(res.data, null, 4));
+          this.started = false;
+        })
+        .catch((err) => {
+          console.log("err=" + err);
+        });
+    },
+  },
+};
+</script>

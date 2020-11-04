@@ -1,7 +1,7 @@
 <template>
-  <router-link :to=link class="btn-view">
-    <i :class=iconName></i>
-    <span >{{textName}}</span>
+  <router-link :to="link" class="btn-view">
+    <i class="btn-icon" :class="iconName"></i>
+    <span>{{ textName }}</span>
   </router-link>
 </template>
 
@@ -11,28 +11,25 @@ export default {
   props: {
     textName: String,
     iconName: String,
-    link: String
-  }
-}
+    link: String,
+  },
+};
 </script>
 
 <style scoped>
-  .btn-view{
-    text-decoration: none;
-    color: #242323;
-    letter-spacing: 1px;
-    display: inline-flex;
-    margin: 15px;
-    cursor: pointer;
-  }
-
-  .btn-view i{
-    margin-right: 25px;
-    font-size: 35px;
-  }
-
-  .btn-view span{
-    font-size: 23px;
-    line-height: 33px;
-  }
+.btn-view {
+  text-decoration: none;
+  color: #242323;
+  letter-spacing: 1px;
+  display: inline-flex;
+  margin: 8px;
+  cursor: pointer;
+  margin: 8px 25%;
+}
+.btn-icon {
+  margin-right: 15px;
+}
+span {
+  font-size: 18px;
+}
 </style>
