@@ -1,0 +1,71 @@
+$fontCol1: grey;
+$fontCol2: rgb(197, 138, 138);
+
+span {
+  color: $fontCol2;
+}
+
+.top {
+  height: 40%;
+  width: 100%;
+  display: flex;
+}
+
+.elm {
+  width: 100%;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.clock-section {
+  z-index: 1;
+  position: relative;
+}
+
+.chart-section {
+  margin-left: 30%;
+  position: relative;
+  margin: auto;
+}
+
+.infodiv {
+  width: 77%;
+}
+
+.title {
+  margin-top: 0px;
+  height: 25%;
+  width: 100%;
+  color: $fontCol1;
+}
+
+.elems {
+  font-weight: bold;
+  color: $fontCol1;
+  display: flex;
+  width: 100%;
+}
+
+.elem {
+  width: 40%;
+}
+
+.elem1 {
+  width: 60%;
+}
+
+.e1 {
+  text-align: start;
+  padding-left: 10%;
+  font-size: 13px;
+}
+
+.e2 {
+  text-align: start;
+  padding-left: 20%;
+  font-size: 13px;
+}

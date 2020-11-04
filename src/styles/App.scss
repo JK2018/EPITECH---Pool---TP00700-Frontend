@@ -1,0 +1,24 @@
+$background: #fff0d9;
+$font: #2c3e50;
+// $test: green;
+
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+#app {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: $font;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: $background;
+}

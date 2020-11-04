@@ -1,145 +1,145 @@
 <template>
-
-    <div id="clock">
-        <div class="circle">
-            <p class="day">{{ day }}</p>
-            <p class="time">{{ time }}</p>
-            <p class="date">{{ date }}</p>
-        </div>
-        <button class="button2">Clock</button>
+  <div class="head-clock">
+    <div style="font-size: 14px; margin-right: 20px">
+      Click on your timer ->
     </div>
 
+    <!-- <b-icon icon="bell-fill" class="border rounded p-2"></b-icon> -->
+    <div class="clock-number">
+      {{ formattedElapsedTime }}
+    </div>
+
+    <b-button :disabled="started" style="margin-right: 10px" @click="start"
+      >Record</b-button
+    >
+    <b-button :disabled="!started" @click="reset">Stop</b-button>
+  </div>
 </template>
+<style scoped>
+.head-clock {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 3px 4px -2px grey;
+}
+
+.clock-number {
+  font-size: 22px;
+  margin-right: 20px;
+  font-weight: 600;
+}
+
+p {
+  text-align: center;
+  font-size: 24px;
+}
+</style>
 
 <script>
+import axios from "axios";
+import { BButton } from "bootstrap-vue";
+
 export default {
-    name: 'clock',
-    data() {
-        return {
-            time: '',
-            date: '',
-            day: '',
-            week : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            month : ['JAN','FEB','MAR','APR','MAY','JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC'],
-            timerID: 0
-        }
+  name: "clock",
+  components: { BButton },
+  data() {
+    return {
+      elapsedTime: 0,
+      timer: undefined,
+      started: false,
+    };
+  },
+  computed: {
+    formattedElapsedTime() {
+      const date = new Date(null);
+      date.setSeconds(this.elapsedTime / 1000);
+      const utc = date.toUTCString();
+      return utc.substr(utc.indexOf(":") - 2, 8);
     },
-    created(){
-        
-        this.timerID = setInterval(this.updateTime, 1000);
-        this.updateTime();
-    },
-    methods: {
-        zeroPadding(num, digit) {
-            var zero = '';
-            for(var i = 0; i < digit; i++) {
-                zero += '0';
-            }
-            return (zero + num).slice(-digit);
+  },
+  mounted: function () {
+    axios
+      .get("http://localhost:4000/api/clock/" + localStorage.getItem("id"), {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        updateTime() {
-            var cd = new Date();
-            this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2) ;
-            this.date =  this.zeroPadding(this.month[cd.getMonth()], 3) + ' ' + this.zeroPadding(cd.getDate(), 2) ;
-            this.day = this.week[cd.getDay()];
+      })
+      .then((res) => {
+        console.log("Res= " + JSON.stringify(res.data, null, 4));
+        if (res.data.clock.status === false) {
+          this.started = false;
+        } else {
+          this.started = true;
+
+          let start = new Date(res.data.clock.time);
+          let endTime = new Date();
+          let timeDiff = endTime - start;
+          timeDiff;
+          this.elapsedTime = Math.round(timeDiff - 3600000);
+          this.setTimer();
         }
-    }
-}
+      })
+      .catch((err) => {
+        console.log("err=" + err);
+      });
+  },
+  methods: {
+    setTimer() {
+      this.timer = setInterval(() => {
+        this.elapsedTime += 1000;
+      }, 1000);
+    },
+    start() {
+      if (this.started === false) {
+        this.setTimer();
+        axios
+          .post(
+            "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((res) => {
+            console.log("Res= " + JSON.stringify(res.data, null, 4));
+            this.started = true;
+          })
+          .catch((err) => {
+            console.log("err=" + err);
+          });
+      }
+    },
+    reset() {
+      clearInterval(this.timer);
+      this.elapsedTime = 0;
+
+      axios
+        .post(
+          "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log("Res= " + JSON.stringify(res.data, null, 4));
+          this.started = false;
+        })
+        .catch((err) => {
+          console.log("err=" + err);
+        });
+    },
+  },
+};
 </script>
-
-
-
-
-
-
-
-
-
-
-<style lang="scss" scoped>
-
-$fontCol2: rgb(197, 138, 138);
-$shadow1:grey;
-$shadow2:white;
-$background:#fff0d9;
-
-.circle{
-    margin: auto;
-    margin-top: 7%;
-    margin-bottom: 7%;
-    height: 60%;
-    width: 72%;
-    -webkit-appearance: none;
-    border: 6px solid rgba(255,255,255,0.45);
-    border-radius: 50%;
-    background-color:$background;
-    position: relative;
-    color: #f0f0f0;
-    box-shadow:4px 3px 20px $shadow1,
-    -3px -4px 6px $shadow2;
-    letter-spacing: 0.05em;
-    font-size: 30px;
-    font-weight: bold;
-    text-shadow:2px 2px 2px $shadow1,
-    -1px -1px 2px $shadow2;
-}
-
-
-#clock {
-    font-family: 'Share Tech Mono', monospace;
-    width: 250px;
-    height: 300px;
-    text-align: center;
-    border-radius: 5px;
-    padding-top: 1px;
-    padding-bottom: 3%;
-    color:#f0f0f0;
-}
-.time {
-    letter-spacing: 0.05em;
-    font-size: 35px;
-    font-weight: bold;
-    text-shadow:2px 2px 2px $shadow1,
-    -1px -1px 2px $shadow2;
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: $fontCol2;
-}
-.date {
-    letter-spacing: 0.1em;
-    font-size: 20px;
-    color: $fontCol2;
-    margin: 0;
-    font-weight: bold;
-}
-.day {
-    letter-spacing: 0.1em;
-    font-size: 20px;
-    
-    margin: 0;
-    padding-top: 22%;;
-    font-weight: bold;
-    color: $fontCol2;
-}
-button {
-    height: 15%;
-    width: 60%;
-    margin:  auto;
-    -webkit-appearance: none;
-    border: 6px solid rgba(255,255,255,0.45);
-    border-radius: 50px;
-    background-color:$background;
-    position: relative;
-    color: $fontCol2;
-    box-shadow:4px 3px 20px $shadow1,
-    -3px -4px 6px $shadow2;
-    letter-spacing: 0.05em;
-    font-size: 22px;
-    font-weight: bold;
-    text-shadow:2px 2px 2px $shadow1,
-    -1px -1px 2px $shadow2;    
-}
-
-
-</style>

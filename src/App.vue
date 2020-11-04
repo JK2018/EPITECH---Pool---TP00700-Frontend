@@ -5,35 +5,13 @@
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style lang="scss">
-
-$background:#fff0d9;
-$font:#2c3e50;
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $font;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
-body {
-  font-family: 'Roboto', sans-serif;
-  background: $background;
-}
+@import "./styles/_global.scss";
+@import "./styles/App.scss";
 </style>
