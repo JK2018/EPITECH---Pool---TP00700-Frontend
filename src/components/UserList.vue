@@ -6,7 +6,7 @@
             <div class="sbar">
 
               <input type="text" class="search-input-with-dropdown"/>
-              ok
+
                 <SearchBar></SearchBar>
             </div>
             <div class="tglbtn-container">
