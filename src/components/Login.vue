@@ -72,8 +72,8 @@ export default {
                         if (res.status === 200) {
                             console.log(res.data)
                             localStorage.setItem("token", res.data.token);
-                            localStorage.setItem("userId", res.data.claims.id);
-                            localStorage.setItem("userRole", res.data.claims.role);
+                            //localStorage.setItem("userId", res.data.claims.id);
+                            //localStorage.setItem("userRole", res.data.claims.role);
                             // this.$router.push({name:'dashboard'});
                             window.location.href = "/app/dashboard"
                         }
