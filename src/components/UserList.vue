@@ -4,6 +4,9 @@
 
         <div class="searchbar">
             <div class="sbar">
+
+              <input type="text" class="search-input-with-dropdown"/>
+              ok
                 <SearchBar></SearchBar>
             </div>
             <div class="tglbtn-container">
@@ -35,16 +38,6 @@
                 <p class="usr-content-team" >Team n° 9</p>
             </div>
         </div>
-
-	
-    
-
-
-
- 
-
-
-
     </div>  
 </template>
 
@@ -75,6 +68,32 @@ export default {
 
 
 <style lang="scss" scoped>
+
+/*Fabrice Fabio*/
+.search-input-with-dropdown{
+  background-color: #cbc19d78;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  outline: none;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.input-test{
+  width: 100%;
+  height: 100%;
+}
+
+/*Fabrice Fabio*/
+
+
+
 
 
 $background:#cbcaa5;
