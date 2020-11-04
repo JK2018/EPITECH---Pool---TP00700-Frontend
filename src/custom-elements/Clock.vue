@@ -66,29 +66,39 @@ export default {
   },
   mounted: function () {
     axios
-      .post(
-        "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      .get("http://localhost:4000/api/clock/" + localStorage.getItem("id"), {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
         console.log("Res= " + JSON.stringify(res.data, null, 4));
-        this.started = true;
+        if (res.data.clock.status === false) {
+          this.started = false;
+        } else {
+          this.started = true;
+
+          let start = new Date(res.data.clock.time);
+          let endTime = new Date();
+          let timeDiff = endTime - start;
+          timeDiff;
+          this.elapsedTime = Math.round(timeDiff - 3600000);
+          this.setTimer();
+        }
       })
       .catch((err) => {
         console.log("err=" + err);
       });
   },
   methods: {
+    setTimer() {
+      this.timer = setInterval(() => {
+        this.elapsedTime += 1000;
+      }, 1000);
+    },
     start() {
       if (this.started === false) {
-        this.timer = setInterval(() => {
-          this.elapsedTime += 1000;
-        }, 1000);
+        this.setTimer();
         axios
           .post(
             "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
@@ -113,9 +123,15 @@ export default {
       this.elapsedTime = 0;
 
       axios
-        .post("http://localhost:4000/api/clock/" + localStorage.getItem("id"), {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        })
+        .post(
+          "http://localhost:4000/api/clock/" + localStorage.getItem("id"),
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
         .then((res) => {
           console.log("Res= " + JSON.stringify(res.data, null, 4));
           this.started = false;
