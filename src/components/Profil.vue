@@ -1,61 +1,39 @@
 <template>
   <div class="home-body">
-    <div class="maindiv" id="capsule" style="height: 700px">
+    <div class="maindiv" >
 
-      <div id="photo">
-        <img src="../assets/Bastien.jpeg" alt="Avatar" class="round-avatar marg" >
+      <div class="img-profil">
+        <img style="width: 100%; left: 100%" src="../assets/avat.png" alt="Avatar" class="round-avatar marg" >
       </div>
-      <br><br>
+
       <div>
-        
-        <div class="input-container display-in-line marg" style="width: 25%">
-          <input type="text" v-model="FirstName" required=""/>
-          <label>First Name</label>		
+
+        <div class="input-container">
+          <input type="text" v-model="userName" required=""/>
+          <label>Username</label>
         </div>
 
-        <div class="input-container display-in-line marg" style="width: 25%">
-          <input type="text" v-model="LastName" required=""/>
-          <label>Last Name</label>		
-        </div> 
-
-        <br>
-
-        <div class="input-container center marg" style="width: 51%">
-          <input type="text" v-model="eMailAdress" required=""/>
-          <label>Your eMail Adress</label>
+        <div class="input-container">
+          <input type="text" v-model="firstName" required=""/>
+          <label>Firstname</label>
         </div>
 
-        <br>
-
-        <div class="input-container center marg" style="width: 51%">
-          <input type="text" v-model="CompleteAdress" required=""/>
-          <label>Your Complete Adress</label>
+        <div class="input-container">
+          <input type="text" v-model="lastName" required=""/>
+          <label>Lastname</label>
         </div>
 
-        <br>
-
-        <div class="input-container center marg" style="width: 51%">
-          <input type="tel" v-model="PhoneNumber" required=""/>
-          <label>Phone Number</label>
+        <div class="input-container">
+          <input type="text" v-model="email" required=""/>
+          <label>Email</label>
         </div>
 
-        <br>
-
-        <div class="input-container display-in-line marg" style="width: 25%">
-          <input v-model="passw1" type="password" required=""/>
+        <div class="input-container">
+          <input v-model="password" type="password" required=""/>
           <label>Password</label>
         </div>
-      
-        <div class="input-container display-in-line marg" style="width: 25%">
-          <input v-model="passw2" type="password" required=""/>
-          <label>Repeat Password</label>
-        </div>
 
-        <br>
-        <br>
-        <br>
-
-        <button v-on:click="passwordAccept" class="button button1">Submit</button>
+        <button v-on:click="passwordAccept" class="button">Submit</button>
 
       </div>
     </div>
@@ -64,27 +42,54 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Profil",
   components: {
   },
+  mounted() {
+    axios.get('http://localhost:4000/api/users/'+localStorage.getItem("id"),{
+      headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+    })
+        .then(res=>{
+          console.log("Test= "+JSON.stringify(res.data,null,4));
+          console.log("Test= "+JSON.stringify(res.data.user.id,null,4));
+          this.userName = res.data.user.username;
+          this.lastName = res.data.user.lastname;
+          this.firstName = res.data.user.firstname;
+          this.email = res.data.user.email;
+        })
+        .catch(err=>{
+          console.log("err="+err)
+        })
+  },
   data: function() {
     return {
-      passw1: "",
-      passw2: "",
-      FirstName: "Patrick",
-      LastName: "Benzidane",
-      eMailAdress:"patrick.benzidane@epitech.eu",
-      CompleteAdress: "2 Boulevard des Bagaudes, Paris 75000",
-      phone_number: 2345677653
+      password: "",
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email:"",
     }
   },
   methods: {
     passwordAccept() {
-      if (this.passw1 === this.passw2) 
-        alert("Same Password" + this.FirstName + this.LastName + this.eMailAdress + this.CompleteAdress + this.phone_number);
-      else
-        alert("Different Password")
+      axios.put('http://localhost:4000/api/users/'+localStorage.getItem("id"),{
+        username: this.userName,
+        firstname: this.firstName,
+        lastname: this.lastName,
+        email: this.email,
+        password: this.password,
+      }, {
+        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+      })
+          .then(res=>{
+            console.log("Res update= "+JSON.stringify(res.data,null,4));
+          })
+          .catch(err=>{
+            console.log("err="+err)
+          })
     },
   }
 }
@@ -102,12 +107,14 @@ export default {
 }
 .input-container{
 	position:relative;
-	margin-bottom:20px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  width: 50%;
 }
 .input-container label{
 	position:absolute;
-	top:0px;
-	left:0px;
+	top:0;
+	left:0;
 	font-size:16px;
 	color:rgba(17, 17, 17, 0.815);	
 	transition: all 0.2s ease-in-out;
@@ -122,12 +129,10 @@ export default {
 }
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
-	top:-12px;
+	top:-20px;
+  left: 0;
 	font-size:12px;
 	
-}
-.marg {
-  padding: 8px;
 }
 
 .home-body{
@@ -138,42 +143,42 @@ export default {
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   width: 81%;
   margin: 5% auto 0;
-}
-
-.center {
-  margin: auto;
-}
-
-.display-in-line {
-    display: inline-block;
-    width: 100%;
+  background-color: white;
 }
 
 .round-avatar {
     border-radius: 100%;
 }
 .button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: rgba(255, 255, 255, 0.041);
-  padding: 16px 32px;
+  background-color: grey;
+  color: white;
+  padding: 12px;
+  height: 40px;
+  width: 180px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin-bottom: 20px;
   transition-duration: 0.3s;
   cursor: pointer;
-  border-radius: 10%;
-}
-.button1 {
-  background-color: rgba(255, 255, 255, 0); 
-  color: black; 
+  border-radius: 5px;
   border: 1px solid grey;
 }
 
-.button1:hover {
-  background-color: grey;
-  color: white;
+.button:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+}
+
+.img-profil{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 </style>

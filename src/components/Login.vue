@@ -74,6 +74,7 @@ export default {
               console.log("Data = "+JSON.stringify(res,null,4));
               if(res.status === 200){
                 localStorage.setItem("token",res.data.token);
+                localStorage.setItem("id",res.data.claims.id);
                 // this.$router.push({name:'dashboard'});
                 window.location.href = "/app/dashboard"
               }
