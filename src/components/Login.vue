@@ -27,7 +27,7 @@
       <div class="innerDiv right">
         <div class="loginForm">
           <h1>Sign in</h1>
-          <form>
+          <form @submit="login">
             <div class="user-box">
               <input v-model="email" type="email" name="" required />
               <label>Email Address</label>
@@ -37,13 +37,13 @@
               <label>Password</label>
             </div>
             <nav class="routerbtn">
-              <div class="formSubmit" v-on:click="login">
+              <button class="formSubmit">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Sign In
-              </div>
+              </button>
             </nav>
           </form>
         </div>
@@ -64,7 +64,7 @@ export default {
     };
   },
   methods: {
-    login() {
+    login: function (e) {
       if (this.email.trim() !== "" && this.password.trim() !== "") {
         axios
           .post("http://localhost:4000/sessions/sign_in", {
@@ -84,6 +84,7 @@ export default {
           .catch(function (err) {
             console.log("Err = " + err);
           });
+        e.preventDefault();
       } else {
         alert("Veuillez remplir vos champs");
       }
@@ -118,6 +119,15 @@ $fontCol: rgba(255, 255, 255, 0.555);
   margin-left: 10%;
   height: 700px;
   background-image: url("../assets/marble.jpg");
+}
+
+.routerbtn button{
+  outline: none; background: no-repeat;
+  border: 0; color: #ff8b5f; font-size: 16px;
+}
+
+.routerbtn button:hover{
+  color: white;
 }
 
 .innerDiv {
