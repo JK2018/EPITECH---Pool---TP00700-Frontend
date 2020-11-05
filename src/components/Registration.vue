@@ -91,11 +91,19 @@ export default {
       .then(function (res) {
         console.log("Res = "+res);
         console.log("data = "+res.data.result);
-        // this.$router.push({ name: 'login' })
+        alert("Vous pouvez vous connectez")
+        window.location.href = "/login"
       })
       .catch(function (err){
         console.log(err.response.data);
-        console.log(err.response.status);
+        console.log("err1 : "+err.response.data.errors.email);
+        console.log("err2 : "+err.response.data.errors.username);
+        if(err.response.data.errors.email !== undefined){
+          alert("Cette adresse email existe déjà");
+        }
+        else if(err.response.data.errors.username !== undefined){
+          alert("Cet username existe déjà");
+        }
       })
       ;
     }
