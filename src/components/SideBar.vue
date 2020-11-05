@@ -16,16 +16,19 @@
           link="/app/dashboard"
           icon-name="las la-rocket"
           text-name="Dashboard"
+          v-bind:class="getClass('/app/dashboard')"
         ></BtnCustom>
         <BtnCustom
-          link="/app/dashboard"
+          link="/app/reports"
           icon-name="las la-chart-bar"
           text-name="Reports"
+          v-bind:class="getClass('/app/reports')"
         ></BtnCustom>
         <BtnCustom
           link="/app/user-list"
           icon-name="las la-user-friends"
           text-name="Userlist"
+          v-bind:class="getClass('/app/user-list')"
         ></BtnCustom>
         <!-- link="/app/profil"
             icon-name="las la-user-cog"
@@ -38,6 +41,7 @@
           link="/app/profil"
           icon-name="las la-user-cog"
           text-name="Profil"
+          v-bind:class="getClass('/app/profil')"
         ></BtnCustom>
       </div>
     </div>
@@ -58,10 +62,18 @@ export default {
   components: {
     BtnCustom,
   },
+  computed: {},
   mounted: function () {
+    // console.log(this.$route);
     this.username = localStorage.getItem("username");
   },
   methods: {
+    getClass(test) {
+      console.log(test, this.$route.path);
+      return {
+        "is-active": test === this.$route.path,
+      };
+    },
     testprivateroute() {
       console.log("my token = " + localStorage.getItem("token"));
       axios
@@ -142,7 +154,31 @@ $fontCol: #242323;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  width: 150px;
+  // width: 150px;
+
+  .is-active {
+    background-color: rgb(255, 240, 217);
+    border-radius: 10px;
+  }
+  .btn-view {
+    padding: 4px 30px;
+
+    &:hover {
+      @extend .is-active;
+      transition: background-color 0.4s;
+    }
+  }
+}
+
+.btn-view {
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+  color: $fontCol;
+  letter-spacing: 1px;
+  display: inline-flex;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .icon-btn span {
@@ -158,17 +194,6 @@ $fontCol: #242323;
 .user-name {
   text-align: center;
   color: $fontCol;
-}
-
-.btn-view {
-  align-items: center;
-  display: flex;
-  text-decoration: none;
-  color: $fontCol;
-  letter-spacing: 1px;
-  display: inline-flex;
-  margin: 5px;
-  cursor: pointer;
 }
 
 .btn-view i {
