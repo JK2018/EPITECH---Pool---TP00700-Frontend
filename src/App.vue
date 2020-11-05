@@ -1,39 +1,40 @@
 <template>
-  <div id="app">
+<div id="app">
     <router-view></router-view>
-  </div>
+</div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-  }
+    name: 'App',
+    components: {}
 }
 </script>
 
 <style lang="scss">
-
 $background:#fff0d9;
 $font:#2c3e50;
 
 a {
-  color: inherit;
-  text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
 }
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $font;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: $font;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
 }
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background: $background;
+
+    font-family: 'Roboto', sans-serif;
+    background: $background;
 }
 </style>

@@ -76,7 +76,7 @@ export default {
             })
             .then((res) => {
                 this.apiData = res.data.user;
-                if (this.apiData.workingtimes[0] != null) {
+                if (this.apiData.workingtimes[0] !== null) {
                     this.sumDailyWorkingtimesInHours();
                     this.generateWeekDataSet();
                     this.calcExtraUserInfo();

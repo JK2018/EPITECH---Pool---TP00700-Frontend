@@ -87,7 +87,7 @@ export default {
     methods: {
 
     },
-    created() {
+    mounted() {
         this.data[0].x = this.weekDatasetX;
         this.data[0].y = this.weekDatasetY;
         this.data[0].name = this.apiData.name;
