@@ -13,40 +13,35 @@
         ></chart>
       </div>
     </div>
-    <div class="top">
-      <div class="infodiv">
-        <div class="title">
-          <h2>Dashboard</h2>
-        </div>
-
-        <div class="elems">
-          <div class="elm1">
-            <p class="e1">
-              Time worked this Week :
-              <span> {{ timeWorkedThisWeek }} hours </span>
-            </p>
-            <p class="e1">
-              Time worked Today : <span> {{ timeWorkedToday }} hours</span>
-            </p>
-            <p class="e1">
-              Time to recuperate this week :
-              <span> {{ timeToRecuperateThisWeek }} hours</span>
-            </p>
-            <p class="e1">
-              Remaining work time this week :
-              <span> {{ remainingWorkTimeThisWeek }} hours</span>
-            </p>
-          </div>
-
-          <div class="elm">
-            <p class="e2">
-              Clocked in today at : <span> {{ firstClockIn }}</span>
-            </p>
-            <p class="e2">
-              Clocked out today at : <span> {{ lastClockOut }} </span>
-            </p>
-          </div>
-        </div>
+    <div class="bottom-section">
+      <div class="dashboard-section">
+        <h3 class="title">Dashboard</h3>
+        <ul class="dashboard-ul">
+          <li>
+            Time worked this Week :
+            <span> {{ timeWorkedThisWeek }} hours </span>
+          </li>
+          <li>
+            Time worked Today : <span> {{ timeWorkedToday }} hours</span>
+          </li>
+          <li>
+            Time to recuperate this week :
+            <span> {{ timeToRecuperateThisWeek }} hours</span>
+          </li>
+          <li>
+            Remaining work time this week :
+            <span> {{ remainingWorkTimeThisWeek }} hours</span>
+          </li>
+          <li>
+            Clocked in today at : <span> {{ firstClockIn }}</span>
+          </li>
+          <li>
+            Clocked out today at : <span> {{ lastClockOut }} </span>
+          </li>
+        </ul>
+      </div>
+      <div class="team-section">
+        <h3 class="title">Team</h3>
       </div>
     </div>
   </div>

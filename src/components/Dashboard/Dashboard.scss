@@ -5,12 +5,6 @@ span {
   color: $fontCol2;
 }
 
-.top {
-  height: 40%;
-  width: 100%;
-  display: flex;
-}
-
 .elm {
   width: 100%;
 }
@@ -32,40 +26,38 @@ span {
   margin: auto;
 }
 
-.infodiv {
-  width: 77%;
+.bottom-section {
+  display: flex;
+
+  .title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    height: 90px;
+  }
 }
 
-.title {
-  margin-top: 0px;
-  height: 25%;
-  width: 100%;
-  color: $fontCol1;
+.dashboard-section {
+  flex: 1;
+  // width: 77%;
 }
 
-.elems {
+.team-section {
+  flex: 1;
+
+  .team-head {
+    height: 60px;
+    background-color: white;
+    box-shadow: 0 3px 4px -2px grey;
+  }
+}
+
+.dashboard-ul {
   font-weight: bold;
   color: $fontCol1;
-  display: flex;
+  text-align: start;
+  list-style: none;
   width: 100%;
-}
-
-.elem {
-  width: 40%;
-}
-
-.elem1 {
-  width: 60%;
-}
-
-.e1 {
-  text-align: start;
-  padding-left: 10%;
-  font-size: 13px;
-}
-
-.e2 {
-  text-align: start;
-  padding-left: 20%;
-  font-size: 13px;
 }
