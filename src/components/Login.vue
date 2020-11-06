@@ -73,16 +73,20 @@ export default {
           })
           .then(function (res) {
             console.log("Data = " + JSON.stringify(res, null, 4));
-            if (res.status === 200) {
-              localStorage.setItem("token", res.data.token);
-              localStorage.setItem("username", res.data.claims.username);
-              localStorage.setItem("role", res.data.claims.role);
-              localStorage.setItem("id", res.data.claims.id);
-              window.location.href = "/app/dashboard";
+            if(res.data.error === undefined){
+              if (res.status === 200) {
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("username", res.data.claims.username);
+                localStorage.setItem("role", res.data.claims.role);
+                localStorage.setItem("id", res.data.claims.id);
+                window.location.href = "/app/dashboard";
+              }
+            }else {
+              alert("User not found");
             }
           })
           .catch(function (err) {
-            console.log("Err = " + err);
+            console.log(err);
           });
         e.preventDefault();
       } else {
