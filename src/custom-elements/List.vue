@@ -90,7 +90,7 @@ export default {
     },
 
     created() {
-        console.log("test22")
+
         var r = localStorage.getItem("role").toString();
         if (r === "manager") {
             this.role = 1
