@@ -23,6 +23,7 @@
     "vue-morris": "^1.1.0",
     "vue-plotly": "^1.1.0",
     "vue-router": "^3.4.8",
+    "vue-template-compiler": "^2.6.12",
     "vue2-frappe": "^1.2.3"
   },
   "devDependencies": {

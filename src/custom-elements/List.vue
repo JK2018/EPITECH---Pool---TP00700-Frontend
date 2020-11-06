@@ -6,12 +6,9 @@
 
         <p class="usr-content-email">{{user.email}}</p>
 
-        <span v-if="user.clock != null">
-            <p v-if="user.clock.status">status : On Site</p>
-            <p v-else>status : Off Site</p>
-        </span>
-        <span v-else>
-            <p>status : Off Site</p>
+        <span>
+            <p v-if="user.clock.status">status : <span style="color: green">On Site</span></p>
+            <p v-else>status : <span style="color: red">Off Site</span></p>
         </span>
 
         <p v-if="user.team_id" p class="usr-content-team">Team n° {{user.team_id}}</p>
@@ -93,6 +90,7 @@ export default {
     },
 
     created() {
+        console.log("test22")
         var r = localStorage.getItem("role").toString();
         if (r === "manager") {
             this.role = 1
