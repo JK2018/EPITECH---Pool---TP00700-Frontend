@@ -67,13 +67,16 @@ export default {
   },
   methods: {
     getClass(test) {
+      console.log(test, this.$route.path);
       return {
         "is-active": test === this.$route.path,
       };
     },
     logout() {
       localStorage.clear();
-      this.$router.push({ name: "login" });
+      this.$router.push({
+        name: "login",
+      });
     },
   },
   data() {
@@ -91,6 +94,7 @@ $backgroundAvatar: #393235;
 $fontCol: #242323;
 
 .sidebar {
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -144,6 +148,7 @@ $fontCol: #242323;
     background-color: rgb(255, 240, 217);
     border-radius: 10px;
   }
+
   .btn-view {
     padding: 4px 30px;
 
@@ -197,7 +202,7 @@ $fontCol: #242323;
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
-
+  margin-bottom: 20%;
   display: flex;
   flex-direction: column;
 }

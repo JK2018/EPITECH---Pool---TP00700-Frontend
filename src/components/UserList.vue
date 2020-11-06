@@ -1,210 +1,129 @@
 <template>
+<div class="home-body">
 
-    <div class="home-body">
-
-        <div class="searchbar">
-            <div class="sbar">
-
-              <input type="text" class="search-input-with-dropdown"/>
-
-                <SearchBar></SearchBar>
-            </div>
-            <div class="tglbtn-container">
-                <i class="fas fa-user fa-2x" style="margin-left: 5px; font-size:30px;"></i>
-                <div class="tglbtn">
-                    <input type="checkbox" id="toggle_checkbox">
-                    <label for="toggle_checkbox"></label>  
-                </div>
-                <i class="fas fa-users fa-2x" style="margin-left: 5px; font-size:30px;"></i>
-            </div>
+    <div class="searchbar">
+        <div class="sbar">
+            <input type="text" class="search-input-with-dropdown" />
+            <!--<SearchBar></SearchBar>-->
         </div>
-
-
-
-        <div class="usr-list">
-            <div class="usr">
-                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i> John Rambo</p> 
-                <p class="usr-content-email">rambo@pwn.com</p>
-                <p class="usr-content-team" >Team n° 357</p>
+        <div class="tglbtn-container">
+            <i class="fas fa-user fa-2x" style="margin-left: 5px; font-size:30px;"></i>
+            <div class="tglbtn">
+                <input type="checkbox" id="toggle_checkbox">
+                <label for="toggle_checkbox"></label>
             </div>
-            <div class="usr">
-                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i> John Doe</p>
-                <p class="usr-content-email" >jd@gmail.com</p>
-                <p class="usr-content-team" >Team n° 12</p>
-            </div>
-            <div class="usr">
-                <p class="usr-content-name"><i class="fas fa-cog"></i><i class="fas fa-times-circle" style="color: rgb(216, 73, 73)"></i> Roger Rabbit</p>
-                <p class="usr-content-email" >eadzedaedazed@gmail.com</p>
-                <p class="usr-content-team" >Team n° 9</p>
-            </div>
+            <i class="fas fa-users fa-2x" style="margin-left: 5px; font-size:30px;"></i>
         </div>
-    </div>  
+    </div>
+    <list v-bind:apiData="apiData"></list>
+
+</div>
 </template>
 
-
-
 <script>
-import SearchBar from '../custom-elements/SearchBar.vue'
+//import SearchBar from '../custom-elements/SearchBar.vue'
+import List from '../custom-elements/List.vue'
+import axios from 'axios'
 export default {
     components: {
-        SearchBar
+        //SearchBar,
+        List
     },
-    data(){
-        return{
+    data() {
+        return {
             apiData: [],
-            
         }
     },
-    methods:{
+    // FETCHES LIST OF ALL USERS
+    created() {
+        axios.get('http://localhost:4000/api/users/', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            .then((res) => {
+                this.apiData = res.data.users.filter((el) => el.id != localStorage.getItem("id"));
+                console.log("Data = " + JSON.stringify(this.apiData, null, 4));
+
+            })
+            .catch((error) => {
+                console.error("Error = " + error)
+            });
 
     },
-    created(){
-        // get request for all users and teams
-    }
-    
+
 }
 </script>
 
-
-
 <style lang="scss" scoped>
-
 /*Fabrice Fabio*/
-.search-input-with-dropdown{
-  background-color: #cbc19d78;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  height: 64px;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-  width: 500px;
-  margin: 0 auto;
-  outline: none;
-  padding: 10px;
-  border-radius: 8px;
+.search-input-with-dropdown {
+    background-color: #cbc19d78;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    outline: none;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-.input-test{
-  width: 100%;
-  height: 100%;
+.input-test {
+    width: 100%;
+    height: 100%;
 }
 
 /*Fabrice Fabio*/
 
-
-
-
-
+/*JK*/
 $background:#cbcaa5;
 $border1: grey;
 $background2: #334d50;
 
-
-i{ 
-    font-size: 18px;
-    margin-left: 2px;
-    margin-right: 2px;
-    font-weight: bold;
-    color: $border1;
-}
-p{
-    font-weight: bold;
-    color: $border1;
-}
-.sbar{
+.sbar {
     margin-top: 3%;
     margin-bottom: 1%;
 }
-.home-body{
-  width: 100%;
+
+.home-body {
+    width: 100%;
 }
 
-.usr-list{
-    margin-top: 5%;
-}
-
-.tglbtn-container{
+.tglbtn-container {
     display: flex;
     width: 110px;
     margin: auto;
 }
 
-.tglbtn{
-    width: 55px; 
-    margin:auto;
-}
-
-.usr{
-    position: relative;
+.tglbtn {
+    width: 55px;
     margin: auto;
-    height: 30px;
-    width: 90%;
-    box-shadow: rgb(199, 199, 199) -4px 4px .2em;
-    border-radius: .375em;
-    margin-bottom: 10px;
-    display:flex;
-    justify-content:space-between;
-    
-}
-.usr-content-name{
-    height: 100%;
-    width: 30%;
-    position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    text-align: start;
-}
-.usr-content-email{
-    height: 100%;
-    width: 30%;
-    position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    text-align: start;
-}
-.usr-content-team{
-    height: 100%;
-    width: 20%;
-    position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    text-align: end;
 }
 
-
-
-
-
-
-
-*
-{
+* {
     -webkit-tap-highlight-color: transparent;
 }
 
-#toggle_checkbox
-{
+#toggle_checkbox {
     display: none;
 }
 
-label
-{
+label {
     position: relative;
     display: block;
     width: 45px;
     height: 25px;
     margin: auto;
     cursor: pointer;
-    
+
 }
 
-label:before
-{
-    
+label:before {
+
     top: 3px;
     left: 6px;
     width: 18px;
@@ -213,17 +132,16 @@ label:before
     border: 3px solid $background;
 }
 
-label:after
-{
-    
+label:after {
+
     right: 0;
     width: 40px;
     height: 24px;
     border: 3px solid $border1;
 }
 
-label:before, label:after
-{
+label:before,
+label:after {
     content: "";
     position: absolute;
     border-radius: 50px;
@@ -231,8 +149,7 @@ label:before, label:after
     transition: 0.5s ease top, 0.5s ease left, 0.5s ease right, 0.5s ease width, 0.5s ease height, 0.5s ease border-color;
 }
 
-#toggle_checkbox:checked + label:before
-{
+#toggle_checkbox:checked+label:before {
     top: 3px;
     left: 24px;
     width: 18px;
@@ -241,8 +158,7 @@ label:before, label:after
     border-color: $background2;
 }
 
-#toggle_checkbox:checked + label:after
-{
+#toggle_checkbox:checked+label:after {
     top: 0px;
     right: 0px;
     width: 40px;
@@ -250,10 +166,5 @@ label:before, label:after
     border-color: $border1;
 }
 
-* {
-	border: 0;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
+/*JK*/
 </style>

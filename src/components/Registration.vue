@@ -21,7 +21,7 @@
       <div class="innerDiv right">
         <div class="loginForm">
           <h1>Create Account</h1>
-          <form>
+          <form @submit="submitForm">
             <div class="user-box">
               <input v-model="userName" type="text" name="" required>
               <label>User Name</label>
@@ -43,13 +43,13 @@
               <label>Password</label>
             </div>
             <nav class="routerbtn">
-              <div class="formSubmit" v-on:click="submitForm">
+              <button type="submit" class="formSubmit" >
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Submit
-              </div>
+                Sign up
+              </button>
             </nav>
           </form>
 
@@ -79,7 +79,7 @@ export default {
     }
   },
   methods:{
-    submitForm(){
+    submitForm: function (e){
       //http://3.87.227.113:4000/test
       axios.post("http://localhost:4000/sessions/sign_up", {
         username: this.userName,
@@ -91,13 +91,23 @@ export default {
       .then(function (res) {
         console.log("Res = "+res);
         console.log("data = "+res.data.result);
-        // this.$router.push({ name: 'login' })
+        alert("Vous pouvez vous connectez")
+        window.location.href = "/login"
       })
       .catch(function (err){
         console.log(err.response.data);
-        console.log(err.response.status);
+        console.log("err1 : "+err.response.data.errors.email);
+        console.log("err2 : "+err.response.data.errors.username);
+        if(err.response.data.errors.email !== undefined){
+          alert("Cette adresse email existe déjà");
+        }
+        else if(err.response.data.errors.username !== undefined){
+          alert("Cet username existe déjà");
+        }
       })
       ;
+
+      e.preventDefault();
     }
   }
 
@@ -218,6 +228,15 @@ $fontCol:rgba(255, 255, 255, 0.555);
   transition: .5s;
   margin-top: 40px;
   letter-spacing: 4px
+}
+
+.routerbtn button{
+  outline: none; background: no-repeat;
+  border: 0; color: #ff8b5f; font-size: 16px;
+}
+
+.routerbtn button:hover{
+  color: white;
 }
 
 .routerbtn:hover {
