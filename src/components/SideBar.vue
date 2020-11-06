@@ -55,7 +55,6 @@
 
 <script>
 import BtnCustom from "@/custom-elements/BtnCustom";
-import axios from "axios";
 
 export default {
   name: "SideBar",
@@ -64,28 +63,13 @@ export default {
   },
   computed: {},
   mounted: function () {
-    // console.log(this.$route);
     this.username = localStorage.getItem("username");
   },
   methods: {
     getClass(test) {
-      console.log(test, this.$route.path);
       return {
         "is-active": test === this.$route.path,
       };
-    },
-    testprivateroute() {
-      console.log("my token = " + localStorage.getItem("token"));
-      axios
-        .get("http://localhost:4000/api/test", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        })
-        .then((res) => {
-          console.log("Res= " + JSON.stringify(res.data, null, 4));
-        })
-        .catch((err) => {
-          console.log("err=" + err);
-        });
     },
     logout() {
       localStorage.clear();

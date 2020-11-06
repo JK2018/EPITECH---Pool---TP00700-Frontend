@@ -132,9 +132,11 @@ export default {
             },
           }
         )
+        // eslint-disable-next-line
         .then((res) => {
-          console.log("Res= " + JSON.stringify(res.data, null, 4));
+          // console.log("Res= " + JSON.stringify(res.data, null, 4));
           this.started = false;
+          this.$emit("stop-click");
         })
         .catch((err) => {
           console.log("err=" + err);
